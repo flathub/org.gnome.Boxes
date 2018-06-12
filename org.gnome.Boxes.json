@@ -331,7 +331,7 @@
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
                     "tag" : "v3.28.5",
-                    "commit" : "020c9366e8cac74513223ee2b246cc662683ff70"
+                    "commit" : "91efbcb7aa97c56369834db1c9e533fe01921589"
                 }
             ]
         }
