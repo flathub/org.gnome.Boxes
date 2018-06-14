@@ -331,7 +331,7 @@
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "fd81babb3502f8b5f4cea7ddcb7c6da5f8cb51c7"
+                    "branch" : "0c8a57d563b0781f3ab091358c3c45d65a0a5922"
                 }
             ]
         }
