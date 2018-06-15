@@ -29,6 +29,7 @@
     "modules" : [
 	{
              "name" : "mtools",
+             "buildsystem" : "autotools",
              "sources" : [
                  {
                      "type" : "archive",
