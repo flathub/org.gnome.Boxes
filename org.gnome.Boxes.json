@@ -330,13 +330,13 @@
             "buildsystem" : "simple",
             "builddir": true,
             "build-commands" : [
-                "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-20180612.tar.xz"
+                "osinfo-db-import --dir /app/share/osinfo/osinfo-db-20180720.tar.xz"
             ],
             "sources" : [
                 {
                     "type" : "file",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20180612.tar.xz",
-                    "sha256" : "d32d3d5443ee71e3bfb6be8fb070508de01cb1ac459569564530ac70e7588b06"
+                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20180720.tar.xz",
+                    "sha256" : "48c9047c35e9f6289c0dfe9238a039068eca6b026962e25bc2fa753e99fa0978"
                 }
             ]
         },
