@@ -330,7 +330,7 @@
             "buildsystem" : "simple",
             "builddir": true,
             "build-commands" : [
-                "osinfo-db-import --dir /app/share/osinfo/osinfo-db-20180720.tar.xz"
+                "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-*.tar.xz"
             ],
             "sources" : [
                 {
