@@ -335,8 +335,8 @@
             "sources" : [
                 {
                     "type" : "file",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20180720.tar.xz",
-                    "sha256" : "48c9047c35e9f6289c0dfe9238a039068eca6b026962e25bc2fa753e99fa0978"
+                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20180920.tar.xz",
+                    "sha256" : "4cc5670f44a9a31fe5272b96350800dbad0783c0838048279b6b88f282fb4ba6"
                 }
             ]
         },
