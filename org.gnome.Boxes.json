@@ -348,7 +348,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/gtk-frdp.git"
+                    "url" : "https://gitlab.gnome.org/GNOME/gtk-frdp.git",
+                    "branch" : "cb96c2512888350b262a69e9f6bfe005e3830456"
                 }
             ]
         },
@@ -361,7 +362,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git",
+                    "branch" : "4bef85e97c636ac4747cb815cf12a0591271b218"
                 }
             ]
         },
