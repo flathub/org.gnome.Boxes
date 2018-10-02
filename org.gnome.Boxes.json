@@ -340,6 +340,32 @@
             ]
         },
         {
+            "name" : "gtk-frdp",
+            "config-opts" : [
+                "--libdir=/app/lib"
+            ],
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/gnome/gtk-frdp.git"
+                }
+            ]
+        },
+        {
+            "name" : "govf",
+            "config-opts" : [
+                "--libdir=/app/lib"
+            ],
+            "buildsystem" : "meson",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                }
+            ]
+        },
+        {
             "name" : "gnome-boxes",
             "buildsystem" : "meson",
             "config-opts" : [
