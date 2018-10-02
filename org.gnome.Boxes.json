@@ -185,20 +185,6 @@
             ]
         },
         {
-            "name" : "python-six",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "pip3 install --prefix=/app six-1.10.0-py2.py3-none-any.whl"
-            ],
-            "sources" : [
-                {
-                    "type" : "file",
-                    "url" : "https://pypi.python.org/packages/c8/0a/b6723e1bc4c516cb687841499455a8505b44607ab535be01091c0f24f079/six-1.10.0-py2.py3-none-any.whl#md5=3ab558cf5d4f7a72611d59a81a315dc8",
-                    "sha256" : "0ff78c403d9bccf5a425a6d31a12aa6b47f1c21ca4dc2573a7e2f32a97335eb1"
-                }
-            ]
-        },
-        {
             "name" : "phodav",
             "sources" : [
                 {
