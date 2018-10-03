@@ -44,6 +44,14 @@
                     "commands": [
                         "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
                     ]
+                },
+                {
+                    "type" : "file",
+                    "path" : "config.sub"
+                },
+                {
+                    "type" : "file",
+                    "path" : "config.guess"
                 }
             ]
         },
