@@ -20,10 +20,6 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
-    "build-options" : {
-        "env" : {
-        }
-    },
     "modules" : [
         {
             "name" : "mtools",
