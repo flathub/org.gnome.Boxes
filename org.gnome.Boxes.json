@@ -25,7 +25,6 @@
             "name" : "mtools",
             "buildsystem" : "autotools",
             "config-opts": ["--disable-static"],
-            "rm-configure": true,
             "sources" : [
                 {
                     "type" : "archive",
@@ -40,12 +39,11 @@
                     ]
                 },
                 {
-                    "type" : "file",
-                    "path" : "config.sub"
-                },
-                {
-                    "type" : "file",
-                    "path" : "config.guess"
+                    "type": "shell",
+                    "commands": [
+                        "cp -f /usr/share/gnu-config/config.sub .",
+                        "cp -f /usr/share/gnu-config/config.guess ."
+                    ]
                 }
             ]
         },
