@@ -2,6 +2,7 @@
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
     "runtime-version" : "3.30",
+    "default-branch" : "beta",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -127,8 +128,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-1.0.0.tar.gz",
-                    "sha256" : "ca9158d01cc4d9e0218f94f8c9ee04ae367d8c3b4396daaebca2c4b89a2e8a47"
+                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-2.0.0.tar.gz",
+                    "sha256" : "94e8c410c67501303d3b32ca8ce2c36edf898511ec4de9b7f29cd35d274b3d6a"
                 }
             ]
         },
@@ -265,18 +266,30 @@
             ]
         },
         {
+            "name" : "virglrenderer",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.7.0.tar.gz",
+                    "sha256" : "e6cf19db769d44a7bc9cf5028d12e0b169c73444714badbd480c97d0386b2a98"
+                }
+            ]
+        },
+        {
             "name" : "qemu",
             "config-opts" : [
                 "--enable-kvm",
                 "--enable-spice",
+                "--enable-opengl",
+                "--enable-virglrenderer",
                 "--enable-usb-redir",
                 "--enable-smartcard"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.qemu.org/qemu-2.11.2.tar.xz",
-                    "sha256" : "02d2b2cf5526b642b174596d9b3a8716184f9e79710bc68bf6d9fec175b3821b"
+                    "url" : "https://download.qemu.org/qemu-3.0.0.tar.xz",
+                    "sha256" : "8d7af64fe8bd5ea5c3bdf17131a8b858491bcce1ee3839425a6d91fb821b5713"
                 }
             ]
         },
@@ -374,14 +387,14 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.30"
+                "-Ddistributor_version=beta"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-30"
+                    "tag" : "v3.31.90"
                 }
             ]
         }
