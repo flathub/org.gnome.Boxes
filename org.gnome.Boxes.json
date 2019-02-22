@@ -335,8 +335,8 @@
             "sources" : [
                 {
                     "type" : "file",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20181116.tar.xz",
-                    "sha256" : "e7e7623a621493e94bb13e6ebd456f1e278c77bebf390d3bf8f3dcadb3142d7c"
+                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20190218.tar.xz",
+                    "sha256" : "26c00f7460de2b1e8e3502e121d4e471ee175d9b65f7d0e53e3035b5eda525d6"
                 }
             ]
         },
