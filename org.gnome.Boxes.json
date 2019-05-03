@@ -372,13 +372,28 @@
             "buildsystem" : "simple",
             "builddir": true,
             "build-commands" : [
-                "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-*.tar.xz"
+                "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-*.tar.xz",
+                "cp -f fedora-30.xml /app/share/osinfo/os/fedoraproject.org/",
+                "cp -f silverblue-30.xml /app/share/osinfo/os/fedoraproject.org/",
+                "cp -f ubuntu-19.04.xml /app/share/osinfo/os/ubuntu.com/"
             ],
             "sources" : [
                 {
                     "type" : "file",
                     "url" : "https://releases.pagure.org/libosinfo/osinfo-db-20190319.tar.xz",
                     "sha256" : "9c01c671f47c8927858e88406d6b6bd448f47dbb077917ac5acc4a80c188f5b5"
+                },
+                {
+                    "type" : "file",
+                    "path" : "fedora-30.xml"
+                },
+                {
+                    "type" : "file",
+                    "path" : "silverblue-30.xml"
+                },
+                {
+                    "type" : "file",
+                    "path" : "ubuntu-19.04.xml"
                 }
             ]
         },
