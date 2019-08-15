@@ -94,6 +94,7 @@
         },
         {
             "name" : "portablexdr",
+            "buildsystem" : "autotools",
             "sources" : [
                 {
                     "type" : "archive",
