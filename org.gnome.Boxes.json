@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "master",
+    "runtime-version" : "3.34beta",
     "default-branch" : "beta",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
@@ -526,7 +526,8 @@
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git"
+                    "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
+                    "branch" : "gnome-3-34"
                 }
             ]
         }
