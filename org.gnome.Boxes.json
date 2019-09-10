@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.32",
+    "runtime-version" : "3.34",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -518,14 +518,14 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.32"
+                "-Ddistributor_version=3.34"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-32"
+                    "branch" : "gnome-3-34"
                 }
             ]
         }
