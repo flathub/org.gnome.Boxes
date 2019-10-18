@@ -183,6 +183,16 @@
             ]
         },
         {
+            "name" : "phodav",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.2/phodav-2.2.tar.xz",
+                    "sha256" : "080305dc9e804562f200ffc8c7d345c76754fce9cb01489dddb1b2c52c0557c1"
+                }
+            ]
+        },
+        {
             "name" : "spice",
             "config-opts" : [
                 "--disable-celt051"
@@ -206,16 +216,6 @@
                     "type" : "file",
                     "url" : "https://pypi.python.org/packages/6a/8a/718fd7d3458f9fab8e67186b00abdd345b639976bc7fb3ae722e1b026a50/pyparsing-2.2.0-py2.py3-none-any.whl#md5=7247e7896688eff4bc8c7fc5d0cdd2b0",
                     "sha256" : "fee43f17a9c4087e7ed1605bd6df994c6173c1e977d7ade7b651292fab2bd010"
-                }
-            ]
-        },
-        {
-            "name" : "phodav",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.2/phodav-2.2.tar.xz",
-                    "sha256" : "080305dc9e804562f200ffc8c7d345c76754fce9cb01489dddb1b2c52c0557c1"
                 }
             ]
         },
