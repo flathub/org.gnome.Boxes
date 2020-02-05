@@ -1,11 +1,12 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.34beta",
+    "runtime-version" : "3.36beta",
     "default-branch" : "beta",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "desktop-file-name-prefix" : "(Beta) ",
+    "tags" : ["devel", "development", "beta"],
     "finish-args" : [
         "--share=ipc",
         "--socket=fallback-x11",
@@ -14,9 +15,11 @@
         "--socket=pulseaudio",
         "--share=network",
         "--device=all",
+        "--system-talk-name=org.freedesktop.timedate1",
+        "--system-talk-name=org.freedesktop.Accounts",
+        "--filesystem=/var/lib/AccountsService/icons:ro",
         "--talk-name=org.freedesktop.Tracker1",
-        "--talk-name=org.freedesktop.timedate1",
-        "--talk-name=org.freedesktop.Accounts",
+        "--talk-name=org.freedesktop.secrets",
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
         "--filesystem=home",
@@ -24,17 +27,6 @@
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "modules" : [
-         {
-            "name" : "libarchive",
-            "buildsystem" : "autotools",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://www.libarchive.org/downloads/libarchive-3.3.3.tar.gz",
-                    "sha256" : "ba7eb1781c9fbbae178c4c6bad1c6eb08edab9a1496c64833d1715d022b30e2e"
-                }
-            ]
-        },
         {
             "name" : "check",
             "sources" : [
@@ -97,7 +89,7 @@
         {
             "name" : "portablexdr",
             "buildsystem" : "autotools",
-            "config-opts": ["--disable-static"],
+            "config-opts" : ["--disable-static"],
             "sources" : [
                 {
                     "type" : "archive",
@@ -178,31 +170,33 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-2.0.0.tar.gz",
-                    "sha256" : "94e8c410c67501303d3b32ca8ce2c36edf898511ec4de9b7f29cd35d274b3d6a"
+                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
+                    "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
                 }
             ]
         },
         {
             "name" : "spice-protocol",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://www.spice-space.org/download/releases/spice-protocol-0.12.15.tar.bz2",
-                    "sha256" : "8b4db23baa4b1337a50d049d9bf43f932331dd95f204836c0ce46c4962306419"
+                    "url" : "https://www.spice-space.org/download/releases/spice-protocol-0.14.0.tar.bz2",
+                    "sha256" : "b6a4aa1ca32668790b45a494bbd000e9d05797b391d5a5d4b91adf1118216eac"
                 }
             ]
         },
         {
-            "name" : "spice",
+            "name" : "phodav",
+            "buildsystem" : "meson",
             "config-opts" : [
-                "--disable-celt051"
+                "-Dsystemd=disabled"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://spice-space.org/download/releases/spice-0.14.0.tar.bz2",
-                    "sha256" : "3adb9495b51650e5eab53c74dd6a74919af4b339ff21721d9ab2a45b2e3bb848"
+                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.3/phodav-2.3.tar.xz",
+                    "sha256" : "6ef61e624c30a42fb720ef7ade7447e9ba922d69024b0326dc072fa3362ebe59"
                 }
             ]
         },
@@ -221,83 +215,6 @@
             ]
         },
         {
-            "name" : "phodav",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.2/phodav-2.2.tar.xz",
-                    "sha256" : "080305dc9e804562f200ffc8c7d345c76754fce9cb01489dddb1b2c52c0557c1"
-                }
-            ]
-        },
-        {
-            "name" : "spice-gtk",
-            "build-options" : {
-                "env" : {
-                    "PYTHONPATH" : "/app"
-                }
-            },
-            "config-opts" : [
-                "--disable-controller",
-                "--enable-vala",
-                "--disable-gtk-doc",
-                "--enable-python-checks",
-                "--enable-webdav"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://www.spice-space.org/download/gtk/spice-gtk-0.36.tar.bz2",
-                    "sha256" : "7126c3584df12d40dcf4970f5f46fafd65b757620f911687e549f7da5c8fd7cd"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "spice-gtk-use-gdkseat-api-on-wayland.patch"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "spice-gtk-ungrab-mounse-on-leave-event-on-wayland.patch"
-                }
-            ]
-        },
-        {
-            "name" : "tracker",
-            "cleanup" : [
-                "/bin",
-                "/etc",
-                "/libexec"
-            ],
-            "config-opts" : [
-                "--disable-miner-apps",
-                "--disable-static",
-                "--disable-tracker-extract",
-                "--disable-tracker-needle",
-                "--disable-tracker-preferences",
-                "--disable-artwork",
-                "--disable-tracker-writeback",
-                "--disable-miner-user-guides",
-                "--with-bash-completion-dir=no"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/tracker/2.0/tracker-2.0.3.tar.xz",
-                    "sha256": "5a2fb274c128ec67a920944937b5147ceaf5db16fef6691ea22c4cb841e20580"
-                }
-            ]
-        },
-        {
-            "name" : "usbredir",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "git://anongit.freedesktop.org/spice/usbredir",
-                    "tag" : "usbredir-0.7.1",
-                    "commit" : "e1a7e3dbbe091bfdc568372ff5ab18ed7eae972e"
-                }
-            ]
-        },
-        {
             "name" : "libcacard",
             "sources" : [
                 {
@@ -308,55 +225,110 @@
             ]
         },
         {
-            "name" : "python-mako",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "pip3 install --prefix=/app --no-deps ."
+            "name" : "spice",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dlz4=false",
+                "-Dmanual=false"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://files.pythonhosted.org/packages/b0/3c/8dcd6883d009f7cae0f3157fb53e9afb05a0d3d33b3db1268ec2e6f4a56b/Mako-1.1.0.tar.gz",
-                    "sha256" : "a36919599a9b7dc5d86a7a8988f23a9a3a3d083070023bab23d64f7f1d1e0a4b"
+                    "url" : "https://spice-space.org/download/releases/spice-0.14.2.tar.bz2",
+                    "sha256" : "b203b3882e06f4c7249a3150d90c84e1a90490d41ead255a3d2cede46f4a29a7"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "spice-meson-fix-version.patch"
                 }
             ]
         },
         {
-            "name" : "mesa",
-            "buildsystem" : "meson",
+            "name" : "spice-gtk",
+            "buildsystem": "meson",
+            "build-options" : {
+                "env" : {
+                    "PYTHONPATH" : "/app"
+                }
+            },
             "config-opts" : [
-                "-Db_ndebug=true",
-                "-Dvulkan-drivers=",
-                "-Ddri-drivers=",
-                "-Dgallium-drivers=",
-                "-Dplatforms=",
-                "-Ddri3=true",
-                "-Ddri2=false",
-                "-Ddri=false",
-                "-Degl=false",
-                "-Dgbm=true",
-                "-Dgles1=false",
-                "-Dgles2=false",
-                "-Dglx=disabled",
-                "-Dlmsensors=false",
-                "-Dosmesa=none",
-                "-Dselinux=false",
-                "-Dshared-glapi=false",
-                "-Dvalgrind=false"
+                "-Dvapi=enabled",
+                "-Dwebdav=enabled",
+                "-Dgtk_doc=disabled"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://mesa.freedesktop.org/archive/mesa-19.1.3.tar.xz",
-                    "sha256" : "845460b2225d15c15d4a9743dec798ff0b7396b533011d43e774e67f7825b7e0"
-                },
+                    "url" : "https://www.spice-space.org/download/gtk/spice-gtk-0.37.tar.bz2",
+                    "sha256" : "1f28b706472ad391cda79a93fd7b4c7a03e84b88fc46ddb35dddbe323c923bb7"
+                }
+            ]
+        },
+        {
+            "name" : "tracker",
+            "buildsystem" : "meson",
+            "cleanup" : [
+                "/bin",
+                "/etc",
+                "/libexec"
+            ],
+            "config-opts" : [
+                "-Dbash_completion=no",
+                "-Dfunctional_tests=false",
+                "-Dman=false",
+                "-Ddocs=false",
+                "-Dsystemd_user_services=no"
+            ],
+            "sources" : [
                 {
-                    "type" : "patch",
-                    "path" : "mesa-break-build-dep-libdrm-nouveau.patch"
-                },
+                    "type" : "archive",
+                    "url" : "https://download.gnome.org/sources/tracker/2.3/tracker-2.3.0.tar.xz",
+                    "sha256": "2c04534da83419b0bc65216e367da51a420f52bb8449f4cc4542c651e5c6bf7b"
+                }
+            ]
+        },
+        {
+            "name": "tracker-miners",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/etc",
+                "/lib",
+                "/libexec",
+                "/share/dbus-1/services/org.freedesktop.Tracker1.Miner.Extract.service",
+                "/share/dbus-1/services/org.freedesktop.Tracker1.Writeback.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service",
+                "/share/tracker-miners",
+                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Extract.gschema.xml",
+                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Writeback.gschema.xml"
+            ],
+            "config-opts": [
+                "-Dextract=false",
+                "-Dgeneric_media_extractor=none",
+                "-Dminer_apps=false",
+                "-Dminer_fs=true",
+                "-Dminer_rss=false",
+                "-Dsystemd_user_services=no",
+                "-Dwriteback=false"
+            ],
+            "sources": [
                 {
-                    "type" : "patch",
-                    "path" : "mesa-disable-gbm-backends.patch"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/tracker-miners/2.3/tracker-miners-2.3.0.tar.xz",
+                    "sha256" : "ade7d61d1ee22288a5adcf02652e81fd1d3ade4d98270f14203fe8ba4183c7cf"
+                }
+            ]
+        },
+
+        {
+            "name" : "usbredir",
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.freedesktop.org/spice/usbredir.git",
+                    "tag" : "usbredir-0.7.1",
+                    "commit" : "e1a7e3dbbe091bfdc568372ff5ab18ed7eae972e"
                 }
             ]
         },
@@ -365,22 +337,15 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.7.0.tar.gz",
-                    "sha256" : "e6cf19db769d44a7bc9cf5028d12e0b169c73444714badbd480c97d0386b2a98"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "virglrenderer-gallium-auxiliary-python-fix.patch"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "virglrenderer-explicitly-link-with-libdrm.patch"
+                    "url" : "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.8.0.tar.gz",
+                    "sha256" : "d98005a06e08616de61475af845a25cf64d84bc279a172c26927123975e9b316"
                 }
             ]
         },
         {
             "name" : "qemu",
             "config-opts" : [
+                "--disable-user",
                 "--enable-kvm",
                 "--enable-spice",
                 "--enable-opengl",
@@ -392,16 +357,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.qemu.org/qemu-3.1.0.tar.xz",
-                    "sha256" : "6a0508df079a0a33c2487ca936a56c12122f105b8a96a44374704bef6c69abfc"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "qemu-3.1-handle-variable-size-SIOCGSTAMP-with-new-kernels.patch"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "qemu-linux-user-rename-gettid.patch"
+                    "url" : "https://download.qemu.org/qemu-4.1.1.tar.xz",
+                    "sha256" : "ed6fdbbdd272611446ff8036991e9b9f04a2ab2e3ffa9e79f3bab0eb9a95a1d2"
                 }
             ]
         },
@@ -423,16 +380,6 @@
             ]
         },
         {
-            "name" : "openssh",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-7.9p1.tar.gz",
-                    "sha256" : "6b4b3ba2253d84ed3771c8050728d597c91cfce898713beb7b64a305b6f11aad"
-                }
-            ]
-        },
-        {
             "name" : "cdrkit",
             "buildsystem" : "cmake",
             "sources" : [
@@ -445,21 +392,31 @@
         },
         {
             "name" : "osinfo-db-tools",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.4.0.tar.gz",
-                    "sha256": "7ee0125c6b99b5b9e10d9bf5951ecc8a170278499a778e6be5c61ef10296f723"
+                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.7.0.tar.xz",
+                    "sha256": "4bddbec5f407436e0b62f0d7657e866adc980709acf5321aa0d4c3eb54aea823"
                 }
             ]
         },
         {
             "name" : "libosinfo",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dwith-pci-ids-path=/app/share/hwdata/pci.ids",
+                "-Dwith-usb-ids-path=/app/share/hwdata/usb.ids"
+            ],
+            "post-install" : [
+                "install -Dm644 ../pci.ids /app/share/hwdata/pci.ids",
+                "install -Dm644 ../usb.ids /app/share/hwdata/usb.ids"
+            ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.4.0.tar.gz",
-                    "sha256": "a29e61a82b1a5727b145403914812273dfa033a0c07a15500078726bb3b84165"
+                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.7.0.tar.xz",
+                    "sha256": "2a3cdf851505af8d9988599c03a54613bf503042f0cf4982e895f4254a697693"
                 },
                 {
                     "type" : "file",
@@ -495,8 +452,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/gtk-frdp.git",
-                    "branch" : "cb96c2512888350b262a69e9f6bfe005e3830456"
+                    "url" : "https://gitlab.gnome.org/gnome/gtk-frdp.git"
                 }
             ]
         },
@@ -509,8 +465,22 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git",
-                    "branch" : "4bef85e97c636ac4747cb815cf12a0591271b218"
+                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                }
+            ]
+        },
+        {
+            "name" : "vte",
+            "buildsystem" : "meson",
+            "build-options" : {
+                "env" : {
+                    "CXXFLAGS" : "-fno-exceptions"
+                }
+            },
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/vte.git"
                 }
             ]
         },
@@ -524,10 +494,9 @@
             ],
             "sources" : [
                 {
-                    "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-34"
+                    "branch" : "gnome-3-36"
                 }
             ]
         }
