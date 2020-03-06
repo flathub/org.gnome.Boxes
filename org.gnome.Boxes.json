@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.34",
+    "runtime-version" : "3.36",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -87,7 +87,7 @@
         {
             "name" : "portablexdr",
             "buildsystem" : "autotools",
-            "config-opts": ["--disable-static"],
+            "config-opts" : ["--disable-static"],
             "sources" : [
                 {
                     "type" : "archive",
@@ -157,8 +157,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-2.0.0.tar.gz",
-                    "sha256" : "94e8c410c67501303d3b32ca8ce2c36edf898511ec4de9b7f29cd35d274b3d6a"
+                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
+                    "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
                 }
             ]
         },
@@ -253,30 +253,61 @@
         },
         {
             "name" : "tracker",
+            "buildsystem" : "meson",
             "cleanup" : [
                 "/bin",
                 "/etc",
                 "/libexec"
             ],
             "config-opts" : [
-                "--disable-miner-apps",
-                "--disable-static",
-                "--disable-tracker-extract",
-                "--disable-tracker-needle",
-                "--disable-tracker-preferences",
-                "--disable-artwork",
-                "--disable-tracker-writeback",
-                "--disable-miner-user-guides",
-                "--with-bash-completion-dir=no"
+                "-Dbash_completion=no",
+                "-Dfunctional_tests=false",
+                "-Dman=false",
+                "-Ddocs=false",
+                "-Dsystemd_user_services=no"
             ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/tracker/2.0/tracker-2.0.3.tar.xz",
-                    "sha256": "5a2fb274c128ec67a920944937b5147ceaf5db16fef6691ea22c4cb841e20580"
+                    "url" : "https://download.gnome.org/sources/tracker/2.3/tracker-2.3.0.tar.xz",
+                    "sha256": "2c04534da83419b0bc65216e367da51a420f52bb8449f4cc4542c651e5c6bf7b"
                 }
             ]
         },
+        {
+            "name": "tracker-miners",
+            "buildsystem": "meson",
+            "cleanup": [
+                "/etc",
+                "/lib",
+                "/libexec",
+                "/share/dbus-1/services/org.freedesktop.Tracker1.Miner.Extract.service",
+                "/share/dbus-1/services/org.freedesktop.Tracker1.Writeback.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service",
+                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service",
+                "/share/tracker-miners",
+                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Extract.gschema.xml",
+                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Writeback.gschema.xml"
+            ],
+            "config-opts": [
+                "-Dextract=false",
+                "-Dgeneric_media_extractor=none",
+                "-Dminer_apps=false",
+                "-Dminer_fs=true",
+                "-Dminer_rss=false",
+                "-Dsystemd_user_services=no",
+                "-Dwriteback=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/tracker-miners/2.3/tracker-miners-2.3.0.tar.xz",
+                    "sha256" : "ade7d61d1ee22288a5adcf02652e81fd1d3ade4d98270f14203fe8ba4183c7cf"
+                }
+            ]
+        },
+
         {
             "name" : "usbredir",
             "sources" : [
@@ -285,20 +316,6 @@
                     "url" : "https://gitlab.freedesktop.org/spice/usbredir.git",
                     "tag" : "usbredir-0.7.1",
                     "commit" : "e1a7e3dbbe091bfdc568372ff5ab18ed7eae972e"
-                }
-            ]
-        },
-        {
-            "name" : "python-mako",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "pip3 install --prefix=/app --no-deps ."
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://files.pythonhosted.org/packages/b0/3c/8dcd6883d009f7cae0f3157fb53e9afb05a0d3d33b3db1268ec2e6f4a56b/Mako-1.1.0.tar.gz",
-                    "sha256" : "a36919599a9b7dc5d86a7a8988f23a9a3a3d083070023bab23d64f7f1d1e0a4b"
                 }
             ]
         },
@@ -362,21 +379,31 @@
         },
         {
             "name" : "osinfo-db-tools",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.4.0.tar.gz",
-                    "sha256": "7ee0125c6b99b5b9e10d9bf5951ecc8a170278499a778e6be5c61ef10296f723"
+                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.7.0.tar.xz",
+                    "sha256": "4bddbec5f407436e0b62f0d7657e866adc980709acf5321aa0d4c3eb54aea823"
                 }
             ]
         },
         {
             "name" : "libosinfo",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dwith-pci-ids-path=/app/share/hwdata/pci.ids",
+                "-Dwith-usb-ids-path=/app/share/hwdata/usb.ids"
+            ],
+            "post-install" : [
+                "install -Dm644 ../pci.ids /app/share/hwdata/pci.ids",
+                "install -Dm644 ../usb.ids /app/share/hwdata/usb.ids"
+            ],
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.4.0.tar.gz",
-                    "sha256": "a29e61a82b1a5727b145403914812273dfa033a0c07a15500078726bb3b84165"
+                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.7.0.tar.xz",
+                    "sha256": "2a3cdf851505af8d9988599c03a54613bf503042f0cf4982e895f4254a697693"
                 },
                 {
                     "type" : "file",
@@ -412,8 +439,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/gtk-frdp.git",
-                    "branch" : "cb96c2512888350b262a69e9f6bfe005e3830456"
+                    "url" : "https://gitlab.gnome.org/gnome/gtk-frdp.git"
                 }
             ]
         },
@@ -426,8 +452,22 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git",
-                    "branch" : "4bef85e97c636ac4747cb815cf12a0591271b218"
+                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                }
+            ]
+        },
+        {
+            "name" : "vte",
+            "buildsystem" : "meson",
+            "build-options" : {
+                "env" : {
+                    "CXXFLAGS" : "-fno-exceptions"
+                }
+            },
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/vte.git"
                 }
             ]
         },
@@ -437,14 +477,14 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.34"
+                "-Ddistributor_version=3.36"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-34"
+                    "branch" : "gnome-3-36"
                 }
             ]
         }
