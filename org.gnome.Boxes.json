@@ -137,6 +137,7 @@
         },
         {
             "name" : "libvirt",
+            "builddir": true,
             "config-opts" : [
                 "--without-html-subdir",
                 "--without-storage-mpath"
