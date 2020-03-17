@@ -161,8 +161,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://libvirt.org/sources/libvirt-6.1.0.tar.xz",
-                    "sha256" : "167c185be45560e73dd3e14ed375778b555c01455192de2dafc4d0f74fabebc0"
+                    "url" : "https://libvirt.org/sources/libvirt-5.10.0.tar.xz",
+                    "sha256" : "9aaa889dccdc16e39eaa53dae36375413619561896920419fb1351bee8a2fc87"
                 }
             ]
         },
