@@ -356,7 +356,8 @@
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
                 "-DCMAKE_INSTALL_PREFIX=/app",
-                "-DCMAKE_INSTALL_LIBDIR=lib"
+                "-DCMAKE_INSTALL_LIBDIR=lib",
+                "-DWITH_OPENH264=ON"
             ],
             "sources" : [
                 {
