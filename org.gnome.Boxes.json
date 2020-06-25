@@ -479,7 +479,9 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/vte.git"
+                    "url" : "https://gitlab.gnome.org/GNOME/vte.git",
+                    "tag": "0.60.3",
+                    "commit": "14e68fbe47de262e8b25d8bbbf6eef6fd7c28cc2"
                 }
             ]
         },
