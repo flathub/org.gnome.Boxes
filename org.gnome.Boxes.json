@@ -163,6 +163,10 @@
                     "type" : "archive",
                     "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
                     "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "libvirt-glib-add-gvir-domain-delete-nvram.patch"
                 }
             ]
         },
@@ -514,6 +518,10 @@
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
                     "branch" : "gnome-3-38"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "boxes-properly-undefine-efi-guests.patch"
                 }
             ]
         }
