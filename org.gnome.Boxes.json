@@ -518,10 +518,6 @@
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
                     "branch" : "gnome-3-38"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "boxes-properly-undefine-efi-guests.patch"
                 }
             ]
         }
