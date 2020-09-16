@@ -146,6 +146,10 @@
                 {
                     "type" : "patch",
                     "path" : "libvirt-check-for-disk-type-correctly.patch"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "libvirt-use-monitor-in-xdg-runtime-dir.patch"
                 }
             ]
         },
@@ -156,6 +160,10 @@
                     "type" : "archive",
                     "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
                     "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "libvirt-glib-add-gvir-domain-delete-nvram.patch"
                 }
             ]
         },
@@ -473,19 +481,35 @@
             ]
         },
         {
+            "name" : "libhandy",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dglade_catalog=disabled"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://source.puri.sm/Librem5/libhandy.git",
+                    "branch" : "libhandy-0-0"
+                }
+            ]
+        },
+        {
             "name" : "gnome-boxes",
             "buildsystem" : "meson",
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.36"
+                "-Ddistributor_version=3.38"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-36"
+                    "branch" : "gnome-3-38"
                 }
             ]
         }
