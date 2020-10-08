@@ -24,6 +24,14 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
+    "add-extensions" : {
+        "org.gnome.Boxes.Extension" : {
+            "version" : "master",
+            "directory" : "share/osinfo",
+            "no-autodownload" : false,
+            "autodelete" : true
+        }
+    },
     "modules" : [
         "shared-modules/intltool/intltool-0.51.json",
         {
