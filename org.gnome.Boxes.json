@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.36",
+    "runtime-version" : "3.38",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -15,8 +15,7 @@
         "--system-talk-name=org.freedesktop.timedate1",
         "--system-talk-name=org.freedesktop.Accounts",
         "--filesystem=/var/lib/AccountsService/icons:ro",
-        "--talk-name=org.freedesktop.Tracker1",
-        "--env=TRACKER_SPARQL_BACKEND=bus",
+        "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software",
         "--talk-name=org.freedesktop.secrets",
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
@@ -253,58 +252,29 @@
             ]
         },
         {
-            "name" : "tracker",
-            "buildsystem" : "meson",
-            "cleanup" : [
-                "/bin",
-                "/etc",
-                "/libexec"
-            ],
-            "config-opts" : [
-                "-Dbash_completion=no",
-                "-Dfunctional_tests=false",
-                "-Dman=false",
-                "-Ddocs=false",
-                "-Dsystemd_user_services=no"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/GNOME/tracker.git",
-                    "branch": "tracker-2.3"
-                }
-            ]
-        },
-        {
             "name": "tracker-miners",
             "buildsystem": "meson",
             "cleanup": [
                 "/etc",
-                "/lib",
                 "/libexec",
-                "/share/dbus-1/services/org.freedesktop.Tracker1.Miner.Extract.service",
-                "/share/dbus-1/services/org.freedesktop.Tracker1.Writeback.service",
-                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service",
-                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service",
-                "/share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service",
-                "/share/tracker-miners",
-                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Extract.gschema.xml",
-                "/share/glib-2.0/schemas/org.freedesktop.Tracker.Writeback.gschema.xml"
+                "/share/tracker-miners"
             ],
             "config-opts": [
-                "-Dextract=false",
+                "-Ddomain_prefix=org.gnome.Boxes",
+                "-Dextract=true",
                 "-Dgeneric_media_extractor=none",
-                "-Dminer_apps=false",
+                "-Dman=false",
                 "-Dminer_fs=true",
+                "-Dminer_fs_cache_location=$XDG_CACHE_HOME/gnome-boxes/miner/files",
                 "-Dminer_rss=false",
-                "-Dsystemd_user_services=no",
+                "-Dsystemd_user_services=false",
                 "-Dwriteback=false"
             ],
             "sources": [
                 {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git",
-                    "branch" : "tracker-miners-2.3"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/tracker-miners/3.0/tracker-miners-3.0.1.tar.xz",
+                    "sha256": "c6fef0a15ef5d31cc0d3041cfdcb1ca5497e6b984649bb20121d33764d2bd1cd"
                 }
             ]
         },
@@ -388,6 +358,10 @@
                     "type" : "git",
                     "url" : "https://github.com/Distrotech/cdrkit",
                     "branch" : "7b4bb72389ea5ea3ecc94545036dcff4728ec38a"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "genisoimage-extern.patch"
                 }
             ]
         },
@@ -506,10 +480,9 @@
             ],
             "sources" : [
                 {
-                    "disable-shallow-clone" : true,
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-38"
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-boxes/3.38/gnome-boxes-3.38.1.tar.xz",
+                    "sha256": "1b0f4eb4a09574c8195bccd94c3e6e03258775a569ee3ba020b1f4096325357f"
                 }
             ]
         }
