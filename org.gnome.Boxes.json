@@ -17,11 +17,8 @@
         "--filesystem=/var/lib/AccountsService/icons:ro",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software",
         "--talk-name=org.freedesktop.secrets",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
         "--filesystem=home",
-        "--talk-name=ca.desrt.dconf",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--metadata=X-DConf=migrate-path=/org/gnome/boxes/"
     ],
     "modules" : [
         "shared-modules/intltool/intltool-0.51.json",
