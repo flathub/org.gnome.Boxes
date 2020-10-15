@@ -480,9 +480,10 @@
             ],
             "sources" : [
                 {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gnome-boxes/3.38/gnome-boxes-3.38.1.tar.xz",
-                    "sha256": "1b0f4eb4a09574c8195bccd94c3e6e03258775a569ee3ba020b1f4096325357f"
+                    "disable-shallow-clone" : true,
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
+                    "branch" : "gnome-3-38"
                 }
             ]
         }
