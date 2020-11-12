@@ -24,8 +24,8 @@
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "add-extensions" : {
-        "org.gnome.Boxes.Extension" : {
-            "version" : "master",
+        "org.gnome.Boxes.Extension.OsinfoDb" : {
+            "version" : "stable",
             "directory" : "share/osinfo",
             "no-autodownload" : false,
             "autodelete" : true
