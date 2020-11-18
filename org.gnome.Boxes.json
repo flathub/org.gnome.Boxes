@@ -408,6 +408,10 @@
                 {
                     "type" : "file",
                     "path" : "usb.ids"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "libosinfo-osinfo-db-loader-workaround.patch"
                 }
             ]
         },
