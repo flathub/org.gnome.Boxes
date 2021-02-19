@@ -38,9 +38,15 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz",
-                    "sha256" : "a81a1f1a79ad4618027628ffac27d3391524c063d9411c7a36a5ec3380e6c080"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/gtk-vnc.git",
+                    "tag" : "v1.0.0",
+                    "commit": "99ce0ff670f1ba2947a2f36ec853cc7fbf015678",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13142,
+                        "tag-template": "v$version"
+                    }
                 }
             ]
         },
@@ -48,9 +54,16 @@
             "name" : "libnl",
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/thom311/libnl/releases/download/libnl3_5_0/libnl-3.5.0.tar.gz",
-                    "sha256" : "352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
+                    "type" : "git",
+                    "url" : "https://github.com/thom311/libnl",
+                    "sha256" : "352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa",
+                    "tag": "libnl3_5_0",
+                    "commit": "7b167ef85f6eb4d7faca349302478b2dc121e309",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1684,
+                        "tag-template": "libnl$version"
+                    }
                 }
             ]
         },
@@ -106,7 +119,12 @@
                 {
                     "type" : "archive",
                     "url" : "http://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-1.2.6.tar.bz2",
-                    "sha256" : "4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc"
+                    "sha256" : "4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 1740,
+                        "url-template": "http://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-$version.tar.bz2"
+                    }
                 }
             ]
         },
@@ -117,7 +135,12 @@
                 {
                     "type" : "archive",
                     "url" : "https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.1.tar.gz",
-                    "sha256" : "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8"
+                    "sha256" : "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 155452,
+                        "url-template": "https://github.com/thkukuk/rpcsvc-proto/archive/v$version.tar.gz"
+                    }
                 }
             ]
         },
@@ -138,21 +161,20 @@
         {
             "name" : "libvirt",
             "builddir" : true,
-            "config-opts" : [
-                "--without-storage-mpath"
-            ],
+            "buildsystem": "meson",
             "build-options" : {
                 "cflags" : "-I/app/include/tirpc -ltirpc"
             },
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://libvirt.org/sources/libvirt-6.1.0.tar.xz",
-                    "sha256" : "167c185be45560e73dd3e14ed375778b555c01455192de2dafc4d0f74fabebc0"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "libvirt-check-for-disk-type-correctly.patch"
+                    "url" : "https://libvirt.org/sources/libvirt-7.0.0.tar.xz",
+                    "sha256" : "ca3833844d08c22867f1d1a46edc36bda7d6fe1a4f267e7d77100b79fc9ddd89",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13830,
+                        "url-template": "https://libvirt.org/sources/libvirt-$version.tar.xz"
+                    }
                 },
                 {
                     "type" : "patch",
@@ -165,8 +187,13 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
-                    "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
+                    "url" : "https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz",
+                    "sha256" : "8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 11560,
+                        "url-template": "http://libvirt.org/sources/glib/libvirt-glib-$version.tar.xz"
+                    }
                 },
                 {
                     "type" : "patch",
@@ -193,9 +220,14 @@
             ],
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.4/phodav-2.4.tar.xz",
-                    "sha256" : "7dddc2b75e04d0866bb9c9a83028a597ebd73ef4c37bd6ebe1032a870b43b8c3"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/phodav.git",
+                    "tag" : "v2.5",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 9670,
+                        "tag-template": "v$version"
+                    }
                 }
             ]
         },
@@ -280,9 +312,14 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/tracker-miners/3.0/tracker-miners-3.0.1.tar.xz",
-                    "sha256": "c6fef0a15ef5d31cc0d3041cfdcb1ca5497e6b984649bb20121d33764d2bd1cd"
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git",
+                    "tag": "3.0.4",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 86776,
+                        "tag-template": "v$version"
+                    }
                 }
             ]
         },
@@ -335,8 +372,13 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.qemu.org/qemu-4.2.1.tar.xz",
-                    "sha256" : "7e331163b72e7bcf63bd35cb85cba87b48d12fab3f264b94c23f7d3991094207"
+                    "url" : "https://download.qemu.org/qemu-5.2.0.tar.xz",
+                    "sha256" : "cb18d889b628fbe637672b0326789d9b0e3b8027e0445b936537c78549df17bc",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 13607,
+                        "url-template": "https://download.qemu.org/qemu-$version.tar.xz"
+                    }
                 }
             ]
         },
@@ -397,9 +439,14 @@
             ],
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.7.1.tar.xz",
-                    "sha256": "bb26106ad4a9f8523f81b332d2aedb717cdcb0500b3f68ba7c6ff945c4d627e9"
+                    "type" : "git",
+                    "url" : "https://gitlab.com/libosinfo/libosinfo.git",
+                    "tag": "v1.9.0",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 155460,
+                        "tag-template": "v$version"
+                    }
                 },
                 {
                     "type" : "file",
@@ -461,9 +508,14 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/vte/0.62/vte-0.62.1.tar.xz",
-                    "sha256" : "c369e87c0c8284e09109d0a9aac821f543558f51c0cb9c7acfff3df64153308d"
+                    "type" : "git",
+                    "url" : "https://gitlab.gnome.org/GNOME/vte",
+                    "tag" : "0.63.91",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 10895,
+                        "tag-template": "$version"
+                    }
                 }
             ]
         },
@@ -478,8 +530,13 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "https://source.puri.sm/Librem5/libhandy.git",
-                    "branch" : "libhandy-0-0"
+                    "url" : "https://gitlab.gnome.org/GNOME/libhandy.git",
+                    "tag" : "1.1.90",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 114486,
+                        "tag-template": "$version"
+                    }
                 }
             ]
         },
@@ -489,14 +546,19 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.38"
+                "-Ddistributor_version=40"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-38"
+                    "tag" : "v3.38.2",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 9531,
+                        "tag-template": "v$version"
+                    }
                 }
             ]
         }
