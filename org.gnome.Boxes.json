@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.38",
+    "runtime-version" : "40beta",
     "default-branch" : "beta",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
