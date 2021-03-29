@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.38",
+    "runtime-version" : "40",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -16,6 +16,7 @@
         "--system-talk-name=org.freedesktop.Accounts",
         "--filesystem=/var/lib/AccountsService/icons:ro",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software",
+        "--talk-name=org.gnome.ControlCenter",
         "--talk-name=org.freedesktop.secrets",
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
@@ -138,21 +139,15 @@
         {
             "name" : "libvirt",
             "builddir" : true,
-            "config-opts" : [
-                "--without-storage-mpath"
-            ],
+            "buildsystem" : "meson",
             "build-options" : {
                 "cflags" : "-I/app/include/tirpc -ltirpc"
             },
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://libvirt.org/sources/libvirt-6.1.0.tar.xz",
-                    "sha256" : "167c185be45560e73dd3e14ed375778b555c01455192de2dafc4d0f74fabebc0"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "libvirt-check-for-disk-type-correctly.patch"
+                    "url" : "https://libvirt.org/sources/libvirt-6.7.0.tar.xz",
+                    "sha256" : "655b9476c797cdd3bb12e2520acc37335e5299b2d56a5bb9ab3f55db40161342"
                 },
                 {
                     "type" : "patch",
@@ -162,15 +157,12 @@
         },
         {
             "name" : "libvirt-glib",
+            "buildsystem" : "meson",
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-3.0.0.tar.gz",
-                    "sha256" : "7fff8ca9a2b723dbfd04223b1c7624251c8bf79eb57ec27362a7301b2dd9ebfe"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "libvirt-glib-add-gvir-domain-delete-nvram.patch"
+                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz",
+                    "sha256" : "8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd"
                 }
             ]
         },
@@ -293,8 +285,8 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.freedesktop.org/spice/usbredir.git",
-                    "tag" : "usbredir-0.7.1",
-                    "commit" : "e1a7e3dbbe091bfdc568372ff5ab18ed7eae972e"
+                    "tag" : "usbredir-0.8.0",
+                    "commit" : "07b98b8e71f620dfdd57e92ddef6b677b259a092"
                 }
             ]
         },
@@ -335,8 +327,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://download.qemu.org/qemu-4.2.1.tar.xz",
-                    "sha256" : "7e331163b72e7bcf63bd35cb85cba87b48d12fab3f264b94c23f7d3991094207"
+                    "url" : "https://download.qemu.org/qemu-5.1.0.tar.xz",
+                    "sha256" : "c9174eb5933d9eb5e61f541cd6d1184cd3118dfe4c5c4955bc1bdc4d390fa4e5"
                 }
             ]
         },
@@ -346,6 +338,7 @@
             "builddir": true,
             "config-opts": [
                 "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+                "-DWITH_OPENH264=ON",
                 "-DCMAKE_INSTALL_PREFIX=/app",
                 "-DCMAKE_INSTALL_LIBDIR=lib",
                 "-DWITH_OPENH264=ON"
@@ -457,46 +450,19 @@
             ]
         },
         {
-            "name" : "vte",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/vte/0.62/vte-0.62.1.tar.xz",
-                    "sha256" : "c369e87c0c8284e09109d0a9aac821f543558f51c0cb9c7acfff3df64153308d"
-                }
-            ]
-        },
-        {
-            "name" : "libhandy",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dtests=false",
-                "-Dexamples=false",
-                "-Dglade_catalog=disabled"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://source.puri.sm/Librem5/libhandy.git",
-                    "branch" : "libhandy-0-0"
-                }
-            ]
-        },
-        {
             "name" : "gnome-boxes",
             "buildsystem" : "meson",
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=3.38"
+                "-Ddistributor_version=40"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-3-38"
+                    "branch" : "gnome-40"
                 }
             ]
         }
