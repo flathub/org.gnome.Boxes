@@ -1,0 +1,33 @@
+From 5a44da853bafcb7c4104caa9781c4c98a7818c4a Mon Sep 17 00:00:00 2001
+From: Felipe Borges <felipeborges@gnome.org>
+Date: Wed, 18 Nov 2020 16:42:26 +0100
+Subject: [PATCH] osinfo_loader: Ignore Boxes' appdata files
+
+This is a HACK!
+
+The Boxes OsinfoDb extension needs a appdata file, and that is
+mounted within the osinfo-db directory. Therefore libosinfo is
+parsing it as osinfo-db data.
+
+This just makes it ignore it.
+---
+ osinfo/osinfo_loader.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/osinfo/osinfo_loader.c b/osinfo/osinfo_loader.c
+index feff650..7dfe68a 100644
+--- a/osinfo/osinfo_loader.c
++++ b/osinfo/osinfo_loader.c
+@@ -2332,6 +2332,9 @@ static void osinfo_loader_find_files(OsinfoLoader *loader,
+         }
+ 
+         while ((info = g_file_enumerator_next_file(ents, NULL, err)) != NULL) {
++            if (g_str_has_prefix(g_file_info_get_name (info), "org.gnome.Boxes"))
++                continue;
++
+             children = g_list_append(children, info);
+         }
+ 
+-- 
+2.28.0
+

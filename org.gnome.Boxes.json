@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "40beta",
+    "runtime-version" : "42beta",
     "default-branch" : "beta",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
@@ -27,222 +27,359 @@
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software"
     ],
+    "add-extensions" : {
+        "org.gnome.Boxes.Extension.OsinfoDb" : {
+            "version" : "stable",
+            "directory" : "share/osinfo",
+            "no-autodownload" : false,
+            "autodelete" : true
+        }
+    },
     "modules" : [
         "shared-modules/intltool/intltool-0.51.json",
         {
-            "name" : "gtk-vnc",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gtk-vnc/1.0/gtk-vnc-1.0.0.tar.xz",
-                    "sha256" : "a81a1f1a79ad4618027628ffac27d3391524c063d9411c7a36a5ec3380e6c080"
-                }
-            ]
-        },
-        {
-            "name" : "libnl",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/thom311/libnl/releases/download/libnl3_5_0/libnl-3.5.0.tar.gz",
-                    "sha256" : "352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
-                }
-            ]
-        },
-        "shared-modules/libusb/libusb.json",
-        {
-            "name" : "yajl",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/lloyd/yajl/archive/2.1.0.tar.gz",
-                    "sha256": "3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a"
-                }
-            ]
-        },
-        {
-            "name" : "portablexdr",
-            "buildsystem" : "autotools",
-            "config-opts" : ["--disable-static"],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://people.redhat.com/~rjones/portablexdr/files/portablexdr-4.9.1.tar.gz",
-                    "sha256" : "5cf4bdd153cf4d44eaf10b725f451d0cfadc070b4b9a9ccfb64094b8f78de72c"
-                },
-                {
-                    "type": "script",
-                    "dest-filename": "autogen.sh",
-                    "commands": [
-                        "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
-                    ]
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "cp -f /usr/share/gnu-config/config.sub .",
-                        "cp -f /usr/share/gnu-config/config.guess ."
-                    ]
-                }
-            ]
-        },
-        {
-            "name" : "libtirpc",
-            "config-opts" : [
-                "--disable-gssapi",
-                "--libdir=/app/lib"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-1.2.6.tar.bz2",
-                    "sha256" : "4278e9a5181d5af9cd7885322fdecebc444f9a3da87c526e7d47f7a12a37d1cc"
-                }
-            ]
-        },
-        {
-            "name" : "rpcsvc-proto",
-            "buildsystem" : "autotools",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.1.tar.gz",
-                    "sha256" : "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8"
-                }
-            ]
-        },
-        {
-            "name" : "docutils",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "pip3 install --prefix=/app docutils-0.16-py2.py3-none-any.whl"
-            ],
-            "sources" : [
-                {
-                    "type" : "file",
-                    "url" : "https://files.pythonhosted.org/packages/81/44/8a15e45ffa96e6cf82956dd8d7af9e666357e16b0d93b253903475ee947f/docutils-0.16-py2.py3-none-any.whl",
-                    "sha256" : "0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"
-                }
-            ]
-        },
-        {
-            "name" : "libvirt",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "build-options" : {
-                "cflags" : "-I/app/include/tirpc -ltirpc"
-            },
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://libvirt.org/sources/libvirt-6.7.0.tar.xz",
-                    "sha256" : "655b9476c797cdd3bb12e2520acc37335e5299b2d56a5bb9ab3f55db40161342"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "libvirt-use-monitor-in-xdg-runtime-dir.patch"
-                }
-            ]
-        },
-        {
-            "name" : "libvirt-glib",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz",
-                    "sha256" : "8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd"
-                }
-            ]
-        },
-        {
-            "name" : "spice-protocol",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://www.spice-space.org/download/releases/spice-protocol-0.14.2.tar.xz",
-                    "sha256" : "8f3a63c8b68300dffe36f2e75eac57afa1e76d5d80af760fd138a0b3f44cf1e9"
-                }
-            ]
-        },
-        {
-            "name" : "phodav",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dsystemd=disabled"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://ftp.gnome.org/pub/GNOME/sources/phodav/2.4/phodav-2.4.tar.xz",
-                    "sha256" : "7dddc2b75e04d0866bb9c9a83028a597ebd73ef4c37bd6ebe1032a870b43b8c3"
-                }
-            ]
-        },
-        {
-            "name" : "python-pyparsing",
-            "buildsystem" : "simple",
-            "build-commands" : [
-                "pip3 install --prefix=/app pyparsing-2.4.6-py2.py3-none-any.whl"
-            ],
-            "sources" : [
-                {
-                    "type" : "file",
-                    "url" : "https://files.pythonhosted.org/packages/5d/bc/1e58593167fade7b544bfe9502a26dc860940a79ab306e651e7f13be68c2/pyparsing-2.4.6-py2.py3-none-any.whl",
-                    "sha256" : "c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"
-                }
-            ]
-        },
-        {
-            "name" : "libcacard",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://www.spice-space.org/download/libcacard/libcacard-2.7.0.tar.xz",
-                    "sha256": "16b1a0847d5f9d2290e0785eca40f2e49d1ed80814bfc758c05c76b3c89cdb6f"
-                }
-            ]
-        },
-        {
-            "name" : "spice",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dlz4=false",
-                "-Dmanual=false"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://spice-space.org/download/releases/spice-0.14.3.tar.bz2",
-                    "sha256" : "551d4be4a07667cf0543f3c895beb6da8a93ef5a9829f2ae47817be5e616a114"
-                }
-            ]
-        },
-        {
-            "name" : "spice-gtk",
+            "name": "libvirt-glib",
             "buildsystem": "meson",
-            "build-options" : {
-                "env" : {
-                    "PYTHONPATH" : "/app"
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz",
+                    "sha256": "8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libnl",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/thom311/libnl/releases/download/libnl3_5_0/libnl-3.5.0.tar.gz",
+                            "sha256": "352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
+                        }
+                    ]
+                },
+                {
+                    "name": "yajl",
+                    "buildsystem": "cmake-ninja",
+                    "builddir": true,
+                    "config-opts": [
+                        "-DCMAKE_BUILD_TYPE=Release"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz",
+                            "sha256" : "3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a"
+                        }
+                    ]
+                },
+                {
+                    "name": "portablexdr",
+                    "buildsystem": "autotools",
+                    "config-opts": ["--disable-static"],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://people.redhat.com/~rjones/portablexdr/files/portablexdr-4.9.1.tar.gz",
+                            "sha256": "5cf4bdd153cf4d44eaf10b725f451d0cfadc070b4b9a9ccfb64094b8f78de72c"
+                        },
+                        {
+                            "type": "script",
+                            "dest-filename": "autogen.sh",
+                            "commands": [
+                                "AUTOMAKE=\"automake --foreign\" autoreconf -vfi"
+                            ]
+                        },
+                        {
+                            "type": "shell",
+                            "commands": [
+                                "cp -f /usr/share/gnu-config/config.sub .",
+                                "cp -f /usr/share/gnu-config/config.guess ."
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "libtirpc",
+                    "config-opts": [
+                        "--disable-gssapi",
+                        "--libdir=/app/lib"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://downloads.sourceforge.net/sourceforge/libtirpc/libtirpc-1.3.2.tar.bz2",
+                            "sha256": "e24eb88b8ce7db3b7ca6eb80115dd1284abc5ec32a8deccfed2224fc2532b9fd"
+                        }
+                    ]
+                },
+                {
+                    "name": "rpcsvc-proto",
+                    "buildsystem": "autotools",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.1.tar.gz",
+                            "sha256": "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8"
+                        }
+                    ]
+                },
+                {
+                    "name": "docutils",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --prefix=/app docutils-0.16-py2.py3-none-any.whl"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://files.pythonhosted.org/packages/81/44/8a15e45ffa96e6cf82956dd8d7af9e666357e16b0d93b253903475ee947f/docutils-0.16-py2.py3-none-any.whl",
+                            "sha256": "0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"
+                        }
+                    ]
+                },
+                {
+                    "name": "libvirt",
+                    "builddir": true,
+                    "buildsystem": "meson",
+                    "build-options": {
+                        "cflags": "-I/app/include/tirpc -ltirpc"
+                    },
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://libvirt.org/sources/libvirt-7.7.0.tar.xz",
+                            "sha256": "1b616099c18d14b9424a622f2a0bd3e0cfa286414f3416bd1a8173621b2252b2"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "libvirt-use-monitor-in-xdg-runtime-dir.patch"
+                        }
+                    ]
+                }
+            ]
+        },
+{
+            "name": "spice-gtk",
+            "buildsystem": "meson",
+            "build-options": {
+                "env": {
+                    "PYTHONPATH": "/app"
                 }
             },
-            "config-opts" : [
+            "config-opts": [
                 "-Dvapi=enabled",
                 "-Dwebdav=enabled",
                 "-Dgtk_doc=disabled"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://www.spice-space.org/download/gtk/spice-gtk-0.38.tar.xz",
-                    "sha256" : "5ae974731baf2b41316d4f0b3ae0c2e47f00bff91a5a617e189cd3dedcd96d8e"
+                    "type": "archive",
+                    "url": "https://www.spice-space.org/download/gtk/spice-gtk-0.39.tar.xz",
+                    "sha256": "23acbee197eaaec9bce6e6bfd885bd8f79708332639243ff04833020865713cd"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "spice-protocol",
+                    "buildsystem": "meson",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.spice-space.org/download/releases/spice-protocol-0.14.3.tar.xz",
+                            "sha256": "f986e5bc2a1598532c4897f889afb0df9257ac21c160c083703ae7c8de99487a"
+                        }
+                    ]
+                },
+                {
+                    "name": "phodav",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dsystemd=disabled"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://ftp.gnome.org/pub/GNOME/sources/phodav/2.5/phodav-2.5.tar.xz",
+                            "sha256": "71f0a9cd70afd4dd1412a0298331dbb8ac71c0377f52117afc15eb88dc6fb910"
+                        }
+                    ]
+                },
+                {
+                    "name": "python-pyparsing",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --prefix=/app pyparsing-2.4.6-py2.py3-none-any.whl"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://files.pythonhosted.org/packages/5d/bc/1e58593167fade7b544bfe9502a26dc860940a79ab306e651e7f13be68c2/pyparsing-2.4.6-py2.py3-none-any.whl",
+                            "sha256": "c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"
+                        }
+                    ]
+                },
+                {
+                    "name": "libcacard",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz",
+                            "sha256": "fbbf4de8cb7db5bdff5ecb672ff0dbe6939fb9f344b900d51ba6295329a332e7"
+                        }
+                    ]
+                },
+                {
+                    "name": "spice",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dlz4=false",
+                        "-Dmanual=false"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://spice-space.org/download/releases/spice-0.14.3.tar.bz2",
+                            "sha256": "551d4be4a07667cf0543f3c895beb6da8a93ef5a9829f2ae47817be5e616a114"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "qemu",
+            "config-opts": [
+                "--disable-user",
+                "--enable-kvm",
+                "--enable-spice",
+                "--enable-opengl",
+                "--enable-virglrenderer",
+                "--enable-usb-redir",
+                "--enable-smartcard",
+                "--python=/bin/python3",
+                "--target-list=x86_64-softmmu,i386-softmmu"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.qemu.org/qemu-6.1.0.tar.xz",
+                    "sha256": "eebc089db3414bbeedf1e464beda0a7515aad30f73261abc246c9b27503a3c96"
+                }
+            ],
+            "modules": [
+                "shared-modules/libusb/libusb.json",
+                {
+                    "name": "usbredir",
+                    "buildsystem" : "meson",
+                    "config-opts": [
+                        "-Dtools=disabled"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://spice-space.org/download/usbredir/usbredir-0.11.0.tar.xz",
+                            "sha256": "72dd5f3aa90dfbc0510b5149bb5b1654c8f21fdc405dfce7b5dc163dcff19cba"
+                        }
+                    ]
+                },
+                {
+                    "name": "virglrenderer",
+                    "buildsystem": "meson",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.9.1.tar.gz",
+                            "sha256": "dd4a8008ca7bcaaf56666c94fcd738d705cdeda6313a82b3cea78bc3fb1b1ba5"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "gtk-vnc",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dpulseaudio=enabled"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk-vnc/1.2/gtk-vnc-1.2.0.tar.xz",
+                    "sha256": "7aaf80040d47134a963742fb6c94e970fcb6bf52dc975d7ae542b2ef5f34b94a"
+                }
+            ]
+        },
+        {
+            "name": "libosinfo",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dwith-pci-ids-path=/app/share/hwdata/pci.ids",
+                "-Dwith-usb-ids-path=/app/share/hwdata/usb.ids"
+            ],
+            "post-install": [
+                "install -Dm644 ../pci.ids /app/share/hwdata/pci.ids",
+                "install -Dm644 ../usb.ids /app/share/hwdata/usb.ids"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.9.0.tar.xz",
+                    "sha256": "b4f3418154ef3f43d9420827294916aea1827021afc06e1644fc56951830a359"
+                },
+                {
+                    "type": "file",
+                    "path": "pci.ids"
+                },
+                {
+                    "type": "file",
+                    "path": "usb.ids"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "libosinfo-osinfo-db-loader-workaround.patch"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "cdrkit",
+                    "buildsystem": "cmake",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/Distrotech/cdrkit",
+                            "branch": "7b4bb72389ea5ea3ecc94545036dcff4728ec38a"
+                        },
+                        {
+                            "type": "patch",
+                            "path": "genisoimage-extern.patch"
+                        }
+                    ]
+                },
+                {
+                    "name": "osinfo-db-tools",
+                    "buildsystem": "meson",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.9.0.tar.xz",
+                            "sha256": "255f1c878bacec70c3020ff5a9cb0f6bd861ca0009f24608df5ef6f62d5243c0"
+                        }
+                    ]
+                },
+                {
+                    "name": "osinfo-db",
+                    "buildsystem": "simple",
+                    "builddir": true,
+                    "build-commands": [
+                        "make",
+                        "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-*.tar.xz"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://gitlab.com/libosinfo/osinfo-db.git"
+                        }
+                    ]
                 }
             ]
         },
@@ -252,10 +389,10 @@
             "cleanup": [
                 "/etc",
                 "/libexec",
-                "/share/tracker-miners"
+                "/share/tracker/miners"
             ],
             "config-opts": [
-                "-Ddomain_prefix=org.gnome.Boxes",
+                "-Ddomain_prefix=org.gnome.BoxesDevel",
                 "-Dextract=true",
                 "-Dgeneric_media_extractor=none",
                 "-Dman=false",
@@ -268,174 +405,20 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git",
-                    "branch" : "tracker-miners-3.0"
+                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git"
                 }
             ]
         },
         {
-            "name" : "usbredir",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.freedesktop.org/spice/usbredir.git",
-                    "tag" : "usbredir-0.8.0",
-                    "commit" : "07b98b8e71f620dfdd57e92ddef6b677b259a092"
-                }
-            ]
-        },
-        {
-            "name" : "epoxy",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/anholt/libepoxy/archive/1.5.4.tar.gz",
-                    "sha256" : "c926fcc606901f3e03e371027056fd478da43e01ce2da7ffc48b5a0de0ca107c"
-                }
-            ]
-        },
-        {
-            "name" : "virglrenderer",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.8.2.tar.gz",
-                    "sha256" : "9fa93095cd9a3e5b13c740e5e3b656a989356732bdaf3e22acb7c38a1f1f4411"
-                }
-            ]
-        },
-        {
-            "name" : "qemu",
-            "config-opts" : [
-                "--disable-user",
-                "--enable-kvm",
-                "--enable-spice",
-                "--enable-opengl",
-                "--enable-virglrenderer",
-                "--enable-usb-redir",
-                "--enable-smartcard",
-                "--python=/bin/python3"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://download.qemu.org/qemu-5.1.0.tar.xz",
-                    "sha256" : "c9174eb5933d9eb5e61f541cd6d1184cd3118dfe4c5c4955bc1bdc4d390fa4e5"
-                }
-            ]
-        },
-        {
-            "name" : "freerdp",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
+            "name": "govf",
             "config-opts": [
-                "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-                "-DWITH_OPENH264=ON",
-                "-DCMAKE_INSTALL_PREFIX=/app",
-                "-DCMAKE_INSTALL_LIBDIR=lib",
-                "-DWITH_OPENH264=ON"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "http://pub.freerdp.com/releases/freerdp-2.1.2.tar.gz",
-                    "sha256" : "f33bc6aef83b8ad3cbf2cdbc82dcfa980ec2b051efb72650f6f2365d55b79b8d"
-                }
-            ]
-        },
-        {
-            "name" : "cdrkit",
-            "buildsystem" : "cmake",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://github.com/Distrotech/cdrkit",
-                    "branch" : "7b4bb72389ea5ea3ecc94545036dcff4728ec38a"
-                },
-                {
-                    "type" : "patch",
-                    "path" : "genisoimage-extern.patch"
-                 }
-            ]
-        },
-        {
-            "name" : "osinfo-db-tools",
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.7.0.tar.xz",
-                    "sha256": "4bddbec5f407436e0b62f0d7657e866adc980709acf5321aa0d4c3eb54aea823"
-                }
-            ]
-        },
-        {
-            "name" : "libosinfo",
-            "buildsystem" : "meson",
-            "config-opts" : [
-                "-Dwith-pci-ids-path=/app/share/hwdata/pci.ids",
-                "-Dwith-usb-ids-path=/app/share/hwdata/usb.ids"
-            ],
-            "post-install" : [
-                "install -Dm644 ../pci.ids /app/share/hwdata/pci.ids",
-                "install -Dm644 ../usb.ids /app/share/hwdata/usb.ids"
-            ],
-            "sources" : [
-                {
-                    "type" : "archive",
-                    "url" : "https://releases.pagure.org/libosinfo/libosinfo-1.7.1.tar.xz",
-                    "sha256": "bb26106ad4a9f8523f81b332d2aedb717cdcb0500b3f68ba7c6ff945c4d627e9"
-                },
-                {
-                    "type" : "file",
-                    "path" : "pci.ids"
-                },
-                {
-                    "type" : "file",
-                    "path" : "usb.ids"
-                }
-            ]
-        },
-        {
-            "name" : "osinfo-db",
-            "buildsystem" : "simple",
-            "builddir": true,
-            "build-commands" : [
-                "make",
-                "osinfo-db-import --dir /app/share/osinfo/ osinfo-db-*.tar.xz"
-            ],
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.com/libosinfo/osinfo-db.git"
-                }
-            ]
-        },
-        {
-            "name" : "gtk-frdp",
-            "config-opts" : [
                 "--libdir=/app/lib"
             ],
-            "buildsystem" : "meson",
-            "sources" : [
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/gtk-frdp.git"
-                }
-            ]
-        },
-        {
-            "name" : "govf",
-            "config-opts" : [
-                "--libdir=/app/lib"
-            ],
-            "buildsystem" : "meson",
-            "sources" : [
-                {
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
                 }
             ]
         },
@@ -451,7 +434,7 @@
                 {
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "master"
+                    "branch" : "gnome-42"
                 }
             ]
         }
