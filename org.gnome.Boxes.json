@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "41",
+    "runtime-version" : "42",
     "sdk" : "org.gnome.Sdk",
     "command" : "gnome-boxes",
     "finish-args" : [
@@ -13,8 +13,6 @@
         "--share=network",
         "--device=all",
         "--system-talk-name=org.freedesktop.timedate1",
-        "--system-talk-name=org.freedesktop.Accounts",
-        "--filesystem=/var/lib/AccountsService/icons:ro",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software",
         "--talk-name=org.gnome.ControlCenter",
         "--talk-name=org.freedesktop.secrets",
@@ -65,7 +63,7 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/lloyd/yajl/archive/2.1.0.tar.gz",
+                            "url": "https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz",
                             "sha256": "3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a"
                         }
                     ]
@@ -285,8 +283,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.8.2.tar.gz",
-                            "sha256": "9fa93095cd9a3e5b13c740e5e3b656a989356732bdaf3e22acb7c38a1f1f4411"
+                            "url": "https://github.com/freedesktop/virglrenderer/archive/virglrenderer-0.9.1.tar.gz",
+                            "sha256": "dd4a8008ca7bcaaf56666c94fcd738d705cdeda6313a82b3cea78bc3fb1b1ba5"
                         }
                     ]
                 }
@@ -295,6 +293,9 @@
         {
             "name" : "gtk-vnc",
             "buildsystem" : "meson",
+            "config-opts": [
+                "-Dpulseaudio=enabled"
+            ],
             "sources" : [
                 {
                     "type" : "archive",
@@ -424,7 +425,7 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=41",
+                "-Ddistributor_version=42",
                 "-Drdp=false"
             ],
             "sources" : [
@@ -432,7 +433,7 @@
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "branch" : "gnome-41"
+                    "commit" : "f41bf5c7c64134ad1fdc899070c1b517647e07b5"
                 }
             ]
         }
