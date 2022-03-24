@@ -19,7 +19,7 @@
         "--talk-name=org.freedesktop.secrets",
         "--filesystem=xdg-run/dconf",
         "--filesystem=~/.config/dconf:ro",
-        "--filesystem=home",
+        "--filesystem=host",
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
         "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software"
