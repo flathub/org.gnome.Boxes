@@ -156,7 +156,7 @@
                 }
             ]
         },
-{
+        {
             "name": "spice-gtk",
             "buildsystem": "meson",
             "build-options": {
@@ -344,7 +344,7 @@
                         {
                             "type": "git",
                             "url": "https://github.com/Distrotech/cdrkit",
-                            "branch": "7b4bb72389ea5ea3ecc94545036dcff4728ec38a"
+                            "commit": "7b4bb72389ea5ea3ecc94545036dcff4728ec38a"
                         },
                         {
                             "type": "patch",
@@ -374,7 +374,8 @@
                     "sources": [
                         {
                             "type": "git",
-                            "url": "https://gitlab.com/libosinfo/osinfo-db.git"
+                            "url": "https://gitlab.com/libosinfo/osinfo-db.git",
+                            "commit": "607327686c852192493e3b0803738b06af6955a3"
                         }
                     ]
                 }
@@ -402,7 +403,9 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git"
+                    "url": "https://gitlab.gnome.org/GNOME/tracker-miners.git",
+                    "tag": "3.3.0",
+                    "commit": "7c82a1cbd46a80ec3c2ae72e12b8017c4efe4d2a"
                 }
             ]
         },
@@ -415,7 +418,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.gnome.org/felipeborges/libovf-glib.git"
+                    "url": "https://gitlab.gnome.org/felipeborges/libovf-glib.git",
+                    "commit": "52d35970d385d0beda4b765a7264d77e79736549"
                 }
             ]
         },
