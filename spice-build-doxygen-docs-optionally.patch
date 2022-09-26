@@ -1,0 +1,39 @@
+From 0b25ce9335176d702e7afc93aa780992a67a6533 Mon Sep 17 00:00:00 2001
+From: Felipe Borges <felipeborges@gnome.org>
+Date: Mon, 26 Sep 2022 12:20:34 +0200
+Subject: [PATCH] build: Add option to build doxygen docs conditionally
+
+Signed-off-by: Felipe Borges <felipeborges@gnome.org>
+---
+ meson.build       | 4 +++-
+ meson_options.txt | 5 +++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 333ad44c..2fee6eea 100644
+--- a/meson.build
++++ b/meson.build
+@@ -232,4 +232,6 @@ endif
+ configure_file(output : 'config.h',
+                configuration : spice_server_config_data)
+ 
+-run_target('doxy', command : './doxygen.sh')
++if get_option('docs')
++  run_target('doxy', command : './doxygen.sh')
++endif
+diff --git a/meson_options.txt b/meson_options.txt
+index 034e1e93..a63a1ffb 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -51,3 +51,8 @@ option('tests',
+     type : 'boolean',
+     value : true,
+     description : 'Build the test binaries')
++
++option('docs',
++    type : 'boolean',
++    value : true,
++    description : 'Build the documentation with doxygen')
+-- 
+2.37.3
+
