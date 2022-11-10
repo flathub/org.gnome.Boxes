@@ -327,7 +327,7 @@
             "modules": [
                 {
                     "name": "cdrkit",
-                    "buildsystem": "cmake",
+                    "buildsystem": "cmake-ninja",
                     "sources": [
                         {
                             "type": "git",
