@@ -25,8 +25,7 @@
         "--filesystem=~/.config/dconf:ro",
         "--filesystem=host",
         "--talk-name=ca.desrt.dconf",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf",
-        "--add-policy=Tracker3.dbus:org.freedesktop.Tracker3.Miner.Files=tracker:Software"
+        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
     "add-extensions" : {
         "org.gnome.Boxes.Extension.OsinfoDb" : {
