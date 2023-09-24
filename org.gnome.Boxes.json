@@ -397,14 +397,14 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=44"
+                "-Ddistributor_version=45"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "commit" : "e36257c9da1f765d9162b48e12c5d777d9262173"
+                    "commit" : "fe0ca772717af6d0fd370ae8aebec92597126edf"
                 }
             ]
         }
