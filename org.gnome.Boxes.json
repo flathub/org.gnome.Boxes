@@ -27,6 +27,17 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
+    "cleanup" : [
+        "/usr",
+        "'*.a'",
+        "'*.la'",
+        "/include",
+        "/lib/pkgconfig",
+        "/share/doc",
+        "/share/gtk-doc",
+        "/share/man",
+        "/share/pkgconfig"
+    ],
     "add-extensions" : {
         "org.gnome.Boxes.Extension.OsinfoDb" : {
             "version" : "stable",
