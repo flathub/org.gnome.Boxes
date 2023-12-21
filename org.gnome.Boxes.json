@@ -336,8 +336,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.10.0.tar.xz",
-                    "sha256": "a252e00fc580deb21da0da8c0aa03b8c31e8440b8448c8b98143fab477d32305"
+                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.11.0.tar.xz",
+                    "sha256": "1bf96eec9e1460f3d1a713163cca1ff0d480a3490b50899292f14548b3a96b60"
                 },
                 {
                     "type": "file",
@@ -374,8 +374,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.10.0.tar.xz",
-                            "sha256": "802cdd53b416706ea5844f046ddcfb658c1b4906b9f940c79ac7abc50981ca68"
+                            "url": "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.11.0.tar.xz",
+                            "sha256": "8ba6d31bb5ef07056e38879e070671afbcfec0eb41a87f9950450bbb831b0a1d"
                         }
                     ]
                 },
@@ -391,7 +391,7 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "commit": "2a5ff068bade38031e1195f338270df4ab7c3b7e"
+                            "commit": "a19b494eaddf895ac3dd0fc1c619e41dd0bc7006"
                         }
                     ]
                 }
