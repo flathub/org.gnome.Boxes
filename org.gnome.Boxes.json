@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "45",
+    "runtime-version" : "46",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.vala"
@@ -54,8 +54,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://libvirt.org/sources/glib/libvirt-glib-4.0.0.tar.xz",
-                    "sha256": "8423f7069daa476307321d1c11e2ecc285340cd32ca9fc05207762843edeacbd"
+                    "url": "https://gitlab.com/libvirt/libvirt-glib/-/archive/v5.0.0/libvirt-glib-v5.0.0.tar.gz",
+                    "sha256": "b7ffc65e1e0ed014b5e5bcfbb9574cd56d103eeed974b6229dbf8c62975d16b5"
                 }
             ],
             "modules": [
@@ -391,7 +391,7 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "commit": "2a5ff068bade38031e1195f338270df4ab7c3b7e"
+                            "commit": "107dd4f4e22bfc3830497e377964175414d8f4e7"
                         }
                     ]
                 }
@@ -413,19 +413,36 @@
             ]
         },
         {
+            "name" : "libportal",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dbackend-gtk3=enabled",
+                "-Dbackend-gtk4=disabled",
+                "-Ddocs=false",
+                "-Dtests=false"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/flatpak/libportal/releases/download/0.7.1/libportal-0.7.1.tar.xz",
+                    "sha256" : "297b90b263fad22190a26b8c7e8ea938fe6b18fb936265e588927179920d3805"
+                }
+            ]
+        },
+        {
             "name" : "gnome-boxes",
             "buildsystem" : "meson",
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=45"
+                "-Ddistributor_version=46"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "commit" : "fe0ca772717af6d0fd370ae8aebec92597126edf"
+                    "commit" : "2e4e714ea7c1a51b8e81b2cf6ee9b4784ee2b7d7"
                 }
             ]
         }
