@@ -1,7 +1,7 @@
 {
     "app-id" : "org.gnome.Boxes",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "46",
+    "runtime-version" : "47",
     "sdk" : "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.vala"
@@ -299,8 +299,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.10.0.tar.xz",
-                    "sha256": "a252e00fc580deb21da0da8c0aa03b8c31e8440b8448c8b98143fab477d32305"
+                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.11.0.tar.xz",
+                    "sha256": "1bf96eec9e1460f3d1a713163cca1ff0d480a3490b50899292f14548b3a96b60"
                 },
                 {
                     "type": "file",
@@ -366,7 +366,7 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "commit": "107dd4f4e22bfc3830497e377964175414d8f4e7"
+                            "commit": "cde78484ab747c87532d47cf3f09b76f280c0b74"
                         }
                     ]
                 }
@@ -399,8 +399,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/libportal/releases/download/0.7.1/libportal-0.7.1.tar.xz",
-                    "sha256" : "297b90b263fad22190a26b8c7e8ea938fe6b18fb936265e588927179920d3805"
+                    "url" : "https://github.com/flatpak/libportal/releases/download/0.8.1/libportal-0.8.1.tar.xz",
+                    "sha256" : "281e54e4f8561125a65d20658f1462ab932b2b1258c376fed2137718441825ac"
                 }
             ]
         },
@@ -410,14 +410,14 @@
             "config-opts" : [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=46"
+                "-Ddistributor_version=47"
             ],
             "sources" : [
                 {
                     "disable-shallow-clone" : true,
                     "type" : "git",
                     "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "commit" : "2e4e714ea7c1a51b8e81b2cf6ee9b4784ee2b7d7"
+                    "commit" : "9109bb8368b9bf69ee85c1f436ce04f91cc59885"
                 }
             ]
         }
