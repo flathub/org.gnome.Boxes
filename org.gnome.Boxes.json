@@ -298,9 +298,15 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://releases.pagure.org/libosinfo/libosinfo-1.11.0.tar.xz",
-                    "sha256": "1bf96eec9e1460f3d1a713163cca1ff0d480a3490b50899292f14548b3a96b60"
+                    "type": "git",
+                    "url": "https://gitlab.com/libosinfo/libosinfo.git",
+                    "tag": "v1.11.0",
+                    "commit": "ca9dd5b810dc04ea38048ae9be491654c8596ef9",
+                    "x-checker-data": {
+                        "type": "git",
+                        "url": "https://gitlab.com/libosinfo/libosinfo.git",
+                        "tag-pattern": "^(v[\\d.]+)$"
+                    }
                 },
                 {
                     "type": "file",
@@ -313,6 +319,10 @@
                 {
                     "type" : "patch",
                     "path" : "libosinfo-osinfo-db-loader-workaround.patch"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "Make-xmlError-struct-constant.patch"
                 }
             ],
             "modules": [
@@ -340,9 +350,15 @@
                     "buildsystem": "meson",
                     "sources": [
                         {
-                            "type": "archive",
-                            "url": "https://releases.pagure.org/libosinfo/osinfo-db-tools-1.11.0.tar.xz",
-                            "sha256": "8ba6d31bb5ef07056e38879e070671afbcfec0eb41a87f9950450bbb831b0a1d"
+                            "type": "git",
+                            "url": "https://gitlab.com/libosinfo/osinfo-db-tools.git",
+                            "tag": "v1.11.0",
+                            "commit": "85a1788c6977419b6facad11dbfbf823e739eb3b",
+                            "x-checker-data": {
+                                "type": "git",
+                                "url": "https://gitlab.com/libosinfo/osinfo-db-tools.git",
+                                "tag-pattern": "^(v[\\d.]+)$"
+                            }
                         },
                         {
                             "type": "patch",
@@ -366,7 +382,13 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "commit": "cde78484ab747c87532d47cf3f09b76f280c0b74"
+                            "tag": "v20240701",
+                            "commit": "cde78484ab747c87532d47cf3f09b76f280c0b74",
+                            "x-checker-data": {
+                                "type": "git",
+                                "url": "https://gitlab.com/libosinfo/osinfo-db.git",
+                                "tag-pattern": "^(v\\d+)$"
+                            }
                         }
                     ]
                 }
@@ -398,9 +420,15 @@
             ],
             "sources" : [
                 {
-                    "type" : "archive",
-                    "url" : "https://github.com/flatpak/libportal/releases/download/0.8.1/libportal-0.8.1.tar.xz",
-                    "sha256" : "281e54e4f8561125a65d20658f1462ab932b2b1258c376fed2137718441825ac"
+                    "type" : "git",
+                    "url" : "https://github.com/flatpak/libportal",
+                    "tag" : "0.8.1",
+                    "commit" : "26c15008cbe579f57f89468384f8efc033f25f6f",
+                    "x-checker-data" : {
+                        "type" : "git",
+                        "url" : "https://github.com/flatpak/libportal",
+                        "tag-pattern" : "^([\\d.]+)$"
+                    }
                 }
             ]
         },
@@ -414,10 +442,14 @@
             ],
             "sources" : [
                 {
-                    "disable-shallow-clone" : true,
-                    "type" : "git",
-                    "url" : "https://gitlab.gnome.org/gnome/gnome-boxes.git",
-                    "commit" : "9109bb8368b9bf69ee85c1f436ce04f91cc59885"
+                    "type" : "archive",
+                    "url" : "https://download.gnome.org/sources/gnome-boxes/47/gnome-boxes-47.0.tar.xz",
+                    "sha256" : "65bf6c2de1bf4d51695c9192c5b1e6285cb32c98a18aa948a376ea32038bc78f",
+                    "x-checker-data": {
+                        "is-important": true,
+                        "type": "gnome",
+                        "name": "gnome-boxes"
+                    }
                 }
             ]
         }
