@@ -18,6 +18,7 @@
         "--socket=pulseaudio",
         "--share=network",
         "--device=all",
+        "--device=dri",
         "--system-talk-name=org.freedesktop.timedate1",
         "--talk-name=org.gnome.ControlCenter",
         "--talk-name=org.gnome.Settings",
