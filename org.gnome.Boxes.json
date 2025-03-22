@@ -319,10 +319,6 @@
                 {
                     "type": "patch",
                     "path": "libosinfo-osinfo-db-loader-workaround.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "Make-xmlError-struct-constant.patch"
                 }
             ],
             "modules": [
@@ -359,14 +355,6 @@
                                 "url": "https://gitlab.com/libosinfo/osinfo-db-tools.git",
                                 "tag-pattern": "^(v[\\d.]+)$"
                             }
-                        },
-                        {
-                            "type": "patch",
-                            "path": "meson-move-FORTIFY_SOURCE-setting-to-header-file.patch"
-                        },
-                        {
-                            "type": "patch",
-                            "path": "make-xmlError-structs-constant.patch"
                         }
                     ]
                 },
