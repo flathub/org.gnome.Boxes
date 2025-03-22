@@ -1,8 +1,8 @@
 {
-    "app-id" : "org.gnome.Boxes",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "47",
-    "sdk" : "org.gnome.Sdk",
+    "app-id": "org.gnome.Boxes",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "47",
+    "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.vala"
     ],
@@ -10,8 +10,8 @@
         "prepend-path": "/usr/lib/sdk/vala/bin",
         "prepend-ld-library-path": "/usr/lib/sdk/vala/lib"
     },
-    "command" : "gnome-boxes",
-    "finish-args" : [
+    "command": "gnome-boxes",
+    "finish-args": [
         "--share=ipc",
         "--socket=fallback-x11",
         "--socket=wayland",
@@ -27,7 +27,7 @@
         "--talk-name=ca.desrt.dconf",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
-    "cleanup" : [
+    "cleanup": [
         "/usr",
         "'*.a'",
         "'*.la'",
@@ -38,15 +38,15 @@
         "/share/man",
         "/share/pkgconfig"
     ],
-    "add-extensions" : {
-        "org.gnome.Boxes.Extension.OsinfoDb" : {
-            "version" : "stable",
-            "directory" : "share/osinfo",
-            "no-autodownload" : false,
-            "autodelete" : true
+    "add-extensions": {
+        "org.gnome.Boxes.Extension.OsinfoDb": {
+            "version": "stable",
+            "directory": "share/osinfo",
+            "no-autodownload": false,
+            "autodelete": true
         }
     },
-    "modules" : [
+    "modules": [
         "shared-modules/intltool/intltool-0.51.json",
         {
             "name": "libvirt-glib",
@@ -80,7 +80,7 @@
                         {
                             "type": "archive",
                             "url": "https://github.com/lloyd/yajl/archive/refs/tags/2.1.0.tar.gz",
-                            "sha256" : "3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a"
+                            "sha256": "3fb73364a5a30efe615046d07e6db9d09fd2b41c763c5f7d3bfb121cd5c5ac5a"
                         }
                     ]
                 },
@@ -260,7 +260,7 @@
                 },
                 {
                     "name": "usbredir",
-                    "buildsystem" : "meson",
+                    "buildsystem": "meson",
                     "config-opts": [
                         "-Dtools=disabled"
                     ],
@@ -300,8 +300,8 @@
                 {
                     "type": "git",
                     "url": "https://gitlab.com/libosinfo/libosinfo.git",
-                    "tag": "v1.11.0",
-                    "commit": "ca9dd5b810dc04ea38048ae9be491654c8596ef9",
+                    "tag": "v1.12.0",
+                    "commit": "b505ef5161d2552102a743acd4ad83298d3d8f99",
                     "x-checker-data": {
                         "type": "git",
                         "url": "https://gitlab.com/libosinfo/libosinfo.git",
@@ -317,12 +317,12 @@
                     "path": "usb.ids"
                 },
                 {
-                    "type" : "patch",
-                    "path" : "libosinfo-osinfo-db-loader-workaround.patch"
+                    "type": "patch",
+                    "path": "libosinfo-osinfo-db-loader-workaround.patch"
                 },
                 {
-                    "type" : "patch",
-                    "path" : "Make-xmlError-struct-constant.patch"
+                    "type": "patch",
+                    "path": "Make-xmlError-struct-constant.patch"
                 }
             ],
             "modules": [
@@ -352,8 +352,8 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db-tools.git",
-                            "tag": "v1.11.0",
-                            "commit": "85a1788c6977419b6facad11dbfbf823e739eb3b",
+                            "tag": "v1.12.0",
+                            "commit": "e5564be303bfac49cc3490bd0fada342cd65566f",
                             "x-checker-data": {
                                 "type": "git",
                                 "url": "https://gitlab.com/libosinfo/osinfo-db-tools.git",
@@ -382,8 +382,8 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "tag": "v20240701",
-                            "commit": "cde78484ab747c87532d47cf3f09b76f280c0b74",
+                            "tag": "v20250124",
+                            "commit": "5be10e2c781b62bbaa55bd8f9ae990697fc325b4",
                             "x-checker-data": {
                                 "type": "git",
                                 "url": "https://gitlab.com/libosinfo/osinfo-db.git",
@@ -410,41 +410,41 @@
             ]
         },
         {
-            "name" : "libportal",
-            "buildsystem" : "meson",
-            "config-opts" : [
+            "name": "libportal",
+            "buildsystem": "meson",
+            "config-opts": [
                 "-Dbackend-gtk3=enabled",
                 "-Dbackend-gtk4=disabled",
                 "-Ddocs=false",
                 "-Dtests=false"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "https://github.com/flatpak/libportal",
-                    "tag" : "0.8.1",
-                    "commit" : "26c15008cbe579f57f89468384f8efc033f25f6f",
-                    "x-checker-data" : {
-                        "type" : "git",
-                        "url" : "https://github.com/flatpak/libportal",
-                        "tag-pattern" : "^([\\d.]+)$"
+                    "type": "git",
+                    "url": "https://github.com/flatpak/libportal",
+                    "tag": "0.9.1",
+                    "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce",
+                    "x-checker-data": {
+                        "type": "git",
+                        "url": "https://github.com/flatpak/libportal",
+                        "tag-pattern": "^([\\d.]+)$"
                     }
                 }
             ]
         },
         {
-            "name" : "gnome-boxes",
-            "buildsystem" : "meson",
-            "config-opts" : [
+            "name": "gnome-boxes",
+            "buildsystem": "meson",
+            "config-opts": [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
                 "-Ddistributor_version=47"
             ],
-            "sources" : [
+            "sources": [
                 {
-                    "type" : "archive",
-                    "url" : "https://download.gnome.org/sources/gnome-boxes/47/gnome-boxes-47.0.tar.xz",
-                    "sha256" : "65bf6c2de1bf4d51695c9192c5b1e6285cb32c98a18aa948a376ea32038bc78f",
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-boxes/48/gnome-boxes-48.0.tar.xz",
+                    "sha256": "d05f5f42568fafbf6d88771161b06ed5f739d43121278d418cae95c56e513ead",
                     "x-checker-data": {
                         "is-important": true,
                         "type": "gnome",
@@ -455,4 +455,3 @@
         }
     ]
 }
-
