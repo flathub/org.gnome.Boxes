@@ -426,7 +426,7 @@
             "config-opts": [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=47"
+                "-Ddistributor_version=48"
             ],
             "sources": [
                 {
