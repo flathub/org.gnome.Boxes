@@ -344,6 +344,10 @@
                 {
                     "type": "patch",
                     "path": "libosinfo-osinfo-db-loader-workaround.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "libosinfo-dont-use-deprecated-libxml2-api.patch"
                 }
             ],
             "modules": [
