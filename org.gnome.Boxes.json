@@ -271,7 +271,6 @@
                 }
             ],
             "modules": [
-                "shared-modules/libusb/libusb.json",
                 {
                     "name": "slirp",
                     "buildsystem": "meson",
