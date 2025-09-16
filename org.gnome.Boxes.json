@@ -1,7 +1,7 @@
 {
     "app-id": "org.gnome.Boxes",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "48",
+    "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.vala"
@@ -370,8 +370,8 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "tag": "v20250124",
-                            "commit": "5be10e2c781b62bbaa55bd8f9ae990697fc325b4",
+                            "tag": "v20250606",
+                            "commit": "62f8adceb8ee88e643a134f2cfaf04fc11b9fc51",
                             "x-checker-data": {
                                 "type": "git",
                                 "url": "https://gitlab.com/libosinfo/osinfo-db.git",
@@ -426,13 +426,13 @@
             "config-opts": [
                 "-Dflatpak=true",
                 "-Ddistributor_name=gnome-boxes-flathub",
-                "-Ddistributor_version=48"
+                "-Ddistributor_version=49"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gnome-boxes/48/gnome-boxes-48.0.tar.xz",
-                    "sha256": "d05f5f42568fafbf6d88771161b06ed5f739d43121278d418cae95c56e513ead",
+                    "url": "https://download.gnome.org/sources/gnome-boxes/49/gnome-boxes-49.0.tar.xz",
+                    "sha256": "fa47266da6f5ef7a904c5b8769d4d871bccd4e6b639a363c3235438d7b0e757a",
                     "x-checker-data": {
                         "is-important": true,
                         "type": "gnome",
