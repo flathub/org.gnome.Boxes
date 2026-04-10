@@ -275,8 +275,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://gitlab.freedesktop.org/slirp/libslirp//-/archive/v4.7.0.tar.gz",
-                            "sha256": "ccfd4e330b3d59be19e0cce25b0da000d61bcee2cfb608eb23418920d991a6da"
+                            "url": "https://gitlab.freedesktop.org/-/project/2767/uploads/ed8eaeada090f91a640c8e8e01d704bc/libslirp-4.9.1.tar.xz",
+                            "sha256": "3470767abf6d269ea9497422302c98d46ace45a70fbe9f88583b154282a2c5c0"
                         }
                     ]
                 },
