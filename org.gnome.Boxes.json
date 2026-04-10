@@ -115,8 +115,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://libvirt.org/sources/libvirt-11.7.0.tar.xz",
-                            "sha256": "dd56db0ced8baf668f476698db9956f160c93c0ec0c47a0603843235bf156f78"
+                            "url": "https://download.libvirt.org/libvirt-12.2.0.tar.xz",
+                            "sha256": "ac93cd0da743a6c231911fb549399b415102ecfee775329bebbf61ed843b9786"
                         },
                         {
                             "type": "patch",
