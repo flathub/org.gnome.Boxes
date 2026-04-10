@@ -85,12 +85,11 @@
                 },
                 {
                     "name": "rpcsvc-proto",
-                    "buildsystem": "autotools",
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.1.tar.gz",
-                            "sha256": "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8"
+                            "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz",
+                            "sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b"
                         }
                     ]
                 },
