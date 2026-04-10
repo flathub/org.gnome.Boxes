@@ -232,7 +232,6 @@
                 },
                 {
                     "name": "spice",
-                    "buildsystem": "autotools",
                     "config-opts": [
                         "--disable-lz4",
                         "--disable-manual",
@@ -241,8 +240,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/releases/spice-0.15.1.tar.bz2",
-                            "sha256": "ada9af67ab321916bd7eb59e3d619a4a7796c08a28c732edfc7f02fc80b1a37a"
+                            "url": "https://www.spice-space.org/download/releases/spice-0.16.0.tar.bz2",
+                            "sha256": "0a6ec9528f05371261bbb2d46ff35e7b5c45ff89bb975a99af95a5f20ff4717d"
                         }
                     ]
                 }
