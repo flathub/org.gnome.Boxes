@@ -225,8 +225,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz",
-                            "sha256": "fbbf4de8cb7db5bdff5ecb672ff0dbe6939fb9f344b900d51ba6295329a332e7"
+                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.2.tar.xz",
+                            "sha256": "45fc28a6ff3c7a359d4448132ca190f0a9c760540c445dba4597a5b71de40f68"
                         }
                     ]
                 },
