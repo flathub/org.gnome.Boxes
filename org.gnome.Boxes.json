@@ -47,7 +47,6 @@
         }
     },
     "modules": [
-        "shared-modules/intltool/intltool-0.51.json",
         {
             "name": "libvirt-glib",
             "buildsystem": "meson",
