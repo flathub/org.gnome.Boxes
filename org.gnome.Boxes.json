@@ -263,8 +263,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.qemu.org/qemu-11.0.0.tar.xz",
-                    "sha256": "c04ca36012653f32d11c674d370cf52a710e7d3f18c2d8b63e4932052a4854d6"
+                    "url": "https://download.qemu.org/qemu-11.0.1.tar.xz",
+                    "sha256": "0d235f5820278d914a3155ec27af8e4258d697ea892895570807d69c0cb8cd64"
                 }
             ],
             "modules": [
@@ -274,8 +274,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://gitlab.freedesktop.org/-/project/2767/uploads/ed8eaeada090f91a640c8e8e01d704bc/libslirp-4.9.1.tar.xz",
-                            "sha256": "3470767abf6d269ea9497422302c98d46ace45a70fbe9f88583b154282a2c5c0"
+                            "url": "https://gitlab.freedesktop.org/-/project/2767/uploads/bdcbb727b502f93d312e631cc0980055/libslirp-4.9.3.tar.xz",
+                            "sha256": "be4edb819fb29a51dcbeeb3ada7e39b05fd0841ce2a1259187ba928ee197cf45"
                         }
                     ]
                 },
@@ -340,8 +340,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/v1.7.2.tar.gz",
-                            "sha256": "04a30bd38b426ed771b8a8b5d9b773e54976d4f5d51a80a9e76a45b20c9a8272"
+                            "url": "https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/v1.8.1.tar.gz",
+                            "sha256": "a6bea318d8d4c80ad9637a0c94571ba1148d482604006f02b70e70126ac2310b"
                         }
                     ]
                 }
