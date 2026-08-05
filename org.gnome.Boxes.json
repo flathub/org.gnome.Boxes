@@ -114,8 +114,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://download.libvirt.org/libvirt-12.4.0.tar.xz",
-                            "sha256": "c86c7f758391b895ec90f76f965a56266167028978ac6dce824fea4d6a036b6d"
+                            "url": "https://download.libvirt.org/libvirt-12.6.0.tar.xz",
+                            "sha256": "1592256deb76fc94028ff083a4d9f06a74f3b92a66a1794f37bc26f21430c888"
                         },
                         {
                             "type": "patch",
@@ -249,8 +249,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.qemu.org/qemu-11.0.1.tar.xz",
-                    "sha256": "0d235f5820278d914a3155ec27af8e4258d697ea892895570807d69c0cb8cd64"
+                    "url": "https://download.qemu.org/qemu-11.0.3.tar.xz",
+                    "sha256": "da5fcffc32762820568b828ed430a728864d34d50b6d2f30358597760cbb0523"
                 }
             ],
             "modules": [
@@ -466,8 +466,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal",
-                    "tag": "0.9.1",
-                    "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce",
+                    "tag": "0.10.0",
+                    "commit": "c23024018c8eb076549a1517fcb2d7f80d3e2ed5",
                     "x-checker-data": {
                         "type": "git",
                         "url": "https://github.com/flatpak/libportal",
