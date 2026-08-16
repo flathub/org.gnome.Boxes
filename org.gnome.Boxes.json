@@ -126,15 +126,11 @@
                         {
                             "name": "json-c",
                             "buildsystem": "cmake",
-                            "config-opts": [
-                                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-                            ],
                             "sources": [
                                 {
-                                    "type": "git",
-                                    "url": "https://github.com/json-c/json-c",
-                                    "tag": "json-c-0.18-20240915",
-                                    "commit": "41a55cfcedb54d9c1874f2f0eb07b504091d7e37"
+                                    "type": "archive",
+                                    "url": "https://github.com/json-c/json-c/releases/download/json-c-0.19-20260627/json-c-0.19.tar.gz",
+                                    "sha256": "37ad0249902e301bd9052bf712e511fcc6acff4ecaad4b5900aad9ce564e26de"
                                 }
                             ]
                         }
