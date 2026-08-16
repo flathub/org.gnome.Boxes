@@ -249,8 +249,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.qemu.org/qemu-11.0.3.tar.xz",
-                    "sha256": "da5fcffc32762820568b828ed430a728864d34d50b6d2f30358597760cbb0523"
+                    "url": "https://download.qemu.org/qemu-11.1.0.tar.xz",
+                    "sha256": "6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858"
                 }
             ],
             "modules": [
