@@ -47,7 +47,6 @@
         }
     },
     "modules": [
-        "shared-modules/intltool/intltool-0.51.json",
         {
             "name": "libvirt-glib",
             "buildsystem": "meson",
@@ -64,8 +63,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/thom311/libnl/releases/download/libnl3_5_0/libnl-3.5.0.tar.gz",
-                            "sha256": "352133ec9545da76f77e70ccb48c9d7e5324d67f6474744647a7ed382b5e05fa"
+                            "url": "https://github.com/thom311/libnl/releases/download/libnl3_12_0/libnl-3.12.0.tar.gz",
+                            "sha256": "fc51ca7196f1a3f5fdf6ffd3864b50f4f9c02333be28be4eeca057e103c0dd18"
                         }
                     ]
                 },
@@ -85,12 +84,11 @@
                 },
                 {
                     "name": "rpcsvc-proto",
-                    "buildsystem": "autotools",
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.1.tar.gz",
-                            "sha256": "750f7e57b81407a25b707867e90d7ee80aeb53bf515b114fc218f3c78dc9a6e8"
+                            "url": "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz",
+                            "sha256": "81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b"
                         }
                     ]
                 },
@@ -116,8 +114,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://libvirt.org/sources/libvirt-11.7.0.tar.xz",
-                            "sha256": "dd56db0ced8baf668f476698db9956f160c93c0ec0c47a0603843235bf156f78"
+                            "url": "https://download.libvirt.org/libvirt-12.6.0.tar.xz",
+                            "sha256": "1592256deb76fc94028ff083a4d9f06a74f3b92a66a1794f37bc26f21430c888"
                         },
                         {
                             "type": "patch",
@@ -128,15 +126,11 @@
                         {
                             "name": "json-c",
                             "buildsystem": "cmake",
-                            "config-opts": [
-                                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
-                            ],
                             "sources": [
                                 {
-                                    "type": "git",
-                                    "url": "https://github.com/json-c/json-c",
-                                    "tag": "json-c-0.18-20240915",
-                                    "commit": "41a55cfcedb54d9c1874f2f0eb07b504091d7e37"
+                                    "type": "archive",
+                                    "url": "https://github.com/json-c/json-c/releases/download/json-c-0.19-20260627/json-c-0.19.tar.gz",
+                                    "sha256": "37ad0249902e301bd9052bf712e511fcc6acff4ecaad4b5900aad9ce564e26de"
                                 }
                             ]
                         }
@@ -162,33 +156,19 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://www.spice-space.org/download/gtk/spice-gtk-0.42.tar.xz",
-                    "sha256": "9380117f1811ad1faa1812cb6602479b6290d4a0d8cc442d44427f7f6c0e7a58"
+                    "url": "https://gitlab.freedesktop.org/-/project/64/uploads/88f5d31a961da9921add46ca3f0be904/spice-gtk-0.43.tar.xz",
+                    "sha256": "cee26e5b2d22909f35b40a94398d1e863ca3962ee46494ca97aab206abc3203b"
                 }
             ],
             "modules": [
-                {
-                    "name": "python3-six",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --prefix=/app six-1.17.0-py2.py3-none-any.whl"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl",
-                            "sha256": "4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274"
-                        }
-                    ]
-                },
                 {
                     "name": "spice-protocol",
                     "buildsystem": "meson",
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/releases/spice-protocol-0.14.3.tar.xz",
-                            "sha256": "f986e5bc2a1598532c4897f889afb0df9257ac21c160c083703ae7c8de99487a"
+                            "url": "https://www.spice-space.org/download/releases/spice-protocol-0.14.5.tar.xz",
+                            "sha256": "baf58449f6e89d19f475899ad5fb9196fdc46c03cc53233f4e39cf2978f9cff7"
                         }
                     ]
                 },
@@ -211,13 +191,13 @@
                     "name": "python-pyparsing",
                     "buildsystem": "simple",
                     "build-commands": [
-                        "pip3 install --prefix=/app pyparsing-2.4.6-py2.py3-none-any.whl"
+                        "pip3 install --prefix=/app pyparsing-3.3.2-py3-none-any.whl"
                     ],
                     "sources": [
                         {
                             "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/5d/bc/1e58593167fade7b544bfe9502a26dc860940a79ab306e651e7f13be68c2/pyparsing-2.4.6-py2.py3-none-any.whl",
-                            "sha256": "c342dccb5250c08d45fd6f8b4a559613ca603b57498511740e65cd11a2e7dcec"
+                            "url": "https://files.pythonhosted.org/packages/10/bd/c038d7cc38edc1aa5bf91ab8068b63d4308c66c4c8bb3cbba7dfbc049f9c/pyparsing-3.3.2-py3-none-any.whl",
+                            "sha256": "850ba148bd908d7e2411587e247a1e4f0327839c40e2e5e6d05a007ecc69911d"
                         }
                     ]
                 },
@@ -226,14 +206,13 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.1.tar.xz",
-                            "sha256": "fbbf4de8cb7db5bdff5ecb672ff0dbe6939fb9f344b900d51ba6295329a332e7"
+                            "url": "https://www.spice-space.org/download/libcacard/libcacard-2.8.2.tar.xz",
+                            "sha256": "45fc28a6ff3c7a359d4448132ca190f0a9c760540c445dba4597a5b71de40f68"
                         }
                     ]
                 },
                 {
                     "name": "spice",
-                    "buildsystem": "autotools",
                     "config-opts": [
                         "--disable-lz4",
                         "--disable-manual",
@@ -242,8 +221,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.spice-space.org/download/releases/spice-0.15.1.tar.bz2",
-                            "sha256": "ada9af67ab321916bd7eb59e3d619a4a7796c08a28c732edfc7f02fc80b1a37a"
+                            "url": "https://www.spice-space.org/download/releases/spice-0.16.0.tar.bz2",
+                            "sha256": "0a6ec9528f05371261bbb2d46ff35e7b5c45ff89bb975a99af95a5f20ff4717d"
                         }
                     ]
                 }
@@ -266,8 +245,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.qemu.org/qemu-7.2.0.tar.xz",
-                    "sha256": "5b49ce2687744dad494ae90a898c52204a3406e84d072482a1e1be854eeb2157"
+                    "url": "https://download.qemu.org/qemu-11.1.0.tar.xz",
+                    "sha256": "6ee1d1a61f68212476b27108c26da5f449dc09b626d42f8279ba0dc2e08fa858"
                 }
             ],
             "modules": [
@@ -277,8 +256,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://gitlab.freedesktop.org/slirp/libslirp//-/archive/v4.7.0.tar.gz",
-                            "sha256": "ccfd4e330b3d59be19e0cce25b0da000d61bcee2cfb608eb23418920d991a6da"
+                            "url": "https://gitlab.freedesktop.org/-/project/2767/uploads/bdcbb727b502f93d312e631cc0980055/libslirp-4.9.3.tar.xz",
+                            "sha256": "be4edb819fb29a51dcbeeb3ada7e39b05fd0841ce2a1259187ba928ee197cf45"
                         }
                     ]
                 },
@@ -291,8 +270,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://spice-space.org/download/usbredir/usbredir-0.13.0.tar.xz",
-                            "sha256": "4ba6faa02c0ae6deeb4c53883d66ab54b3a5899bead42ce4ded9568b9a7dc46e"
+                            "url": "https://www.spice-space.org/download/usbredir/usbredir-0.15.0.tar.xz",
+                            "sha256": "6dc2a380277688a068191245dac2ab7063a552999d8ac3ad8e841c10ff050961"
                         }
                     ]
                 },
@@ -302,8 +281,49 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/0.10.4/virglrenderer-0.10.4.tar.gz",
-                            "sha256": "da3fdc59821f645632d986482594410614a95c0c7c703b25bfb3473bd6674214"
+                            "url": "https://gitlab.freedesktop.org/virgl/virglrenderer/-/archive/1.3.0/virglrenderer-1.3.0.tar.gz",
+                            "sha256": "065bc56e89e6f631f96101cd62eba0748e48eb888b434edc86e89d05395e76f3"
+                        }
+                    ],
+                    "modules": [
+                        {
+                            "name": "python3-pyyaml",
+                            "buildsystem": "simple",
+                            "build-commands": [
+                                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pyyaml\" --no-build-isolation"
+                            ],
+                            "sources": [
+                                {
+                                    "type": "file",
+                                    "url": "https://files.pythonhosted.org/packages/05/8e/961c0007c59b8dd7729d542c61a4d537767a59645b82a0b521206e1e25c2/pyyaml-6.0.3.tar.gz",
+                                    "sha256": "d76623373421df22fb4cf8817020cbb7ef15c725b9d5e45f17e189bfc384190f"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "python3-distlib",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"distlib\" --no-build-isolation"
+                    ],
+                    "sources": [
+                        {
+                            "type": "file",
+                            "url": "https://files.pythonhosted.org/packages/02/08/9c41fb51ab5b43eb21674aff13df270e8ba6c4b29c8624e328dc7a9482af/distlib-0.4.3-py2.py3-none-any.whl",
+                            "sha256": "4b0ce306c966eb73bc3a7b6abad017c556dadd92c44701562cd528ac7fde4d5b"
+                        }
+                    ]
+                },
+                {
+                    "name": "dtc",
+                    "buildsystem": "meson",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://git.kernel.org/pub/scm/utils/dtc/dtc.git/snapshot/v1.8.1.tar.gz",
+                            "sha256": "a6bea318d8d4c80ad9637a0c94571ba1148d482604006f02b70e70126ac2310b"
                         }
                     ]
                 }
@@ -442,8 +462,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal",
-                    "tag": "0.9.1",
-                    "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce",
+                    "tag": "0.10.0",
+                    "commit": "c23024018c8eb076549a1517fcb2d7f80d3e2ed5",
                     "x-checker-data": {
                         "type": "git",
                         "url": "https://github.com/flatpak/libportal",
