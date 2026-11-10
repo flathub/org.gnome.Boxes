@@ -1,0 +1,12 @@
+diff --git a/data/org.gnome.Boxes.metainfo.xml.in b/data/org.gnome.Boxes.metainfo.xml.in
+index 7132f0e..b38d116 100644
+--- a/data/org.gnome.Boxes.metainfo.xml.in
++++ b/data/org.gnome.Boxes.metainfo.xml.in
+@@ -97,7 +97,6 @@
+   <url type="translate">https://l10n.gnome.org/module/gnome-boxes/</url>
+   <url type="vcs-browser">https://gitlab.gnome.org/GNOME/gnome-boxes</url>
+   <translation type="gettext">gnome-boxes</translation>
+-  <launchable type="desktop-id">@appid@.desktop</launchable>
+   <content_rating type="oars-1.1" />
+   <custom>
+     <value key="GnomeSoftware::key-colors">[(143, 124, 209)]</value>
