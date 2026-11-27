@@ -402,8 +402,8 @@
                         {
                             "type": "git",
                             "url": "https://gitlab.com/libosinfo/osinfo-db.git",
-                            "tag": "v20251212",
-                            "commit": "70fe571c605541e7be76b50f430c1cd13959c5b9",
+                            "tag": "v20260812",
+                            "commit": "ae7a0bfe36940a7dde23fcd95ce60c0608cb7e33",
                             "x-checker-data": {
                                 "type": "git",
                                 "url": "https://gitlab.com/libosinfo/osinfo-db.git",
@@ -442,8 +442,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/libportal",
-                    "tag": "0.9.1",
-                    "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce",
+                    "tag": "0.11.0",
+                    "commit": "fc4d62cfe131e8494c82f597f92b2234d584c367",
                     "x-checker-data": {
                         "type": "git",
                         "url": "https://github.com/flatpak/libportal",
@@ -463,8 +463,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gnome-boxes/50/gnome-boxes-50.0.tar.xz",
-                    "sha256": "fd6a5de18d1090946ca99f1f5a34aa3e15dc8183f6a72226e8d1504a13672d67",
+                    "url": "https://download.gnome.org/sources/gnome-boxes/50/gnome-boxes-50.1.tar.xz",
+                    "sha256": "e4949fdcbbd5b004bb0eea6c340b4aef41876b60e98bd84779366f3ad3a0677b",
                     "x-checker-data": {
                         "is-important": true,
                         "type": "gnome",
